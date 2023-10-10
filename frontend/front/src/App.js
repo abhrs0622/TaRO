@@ -10,6 +10,8 @@ import {
 import Home from "./page/Home"
 import  Set_op  from "./page/Setting_op.js";
 import  Set  from "./page/setting.js";
+import  Destination  from "./page/Destination.js";
+
 function App() {
   return (
     <div className="App">
@@ -18,6 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Setting_option" element={<Set_op />} />
           <Route path="/Setting" element={<Set />} />
+          <Route path="/Destination" element={<Destination />} />
         </Routes>
       </Router>
     </div>

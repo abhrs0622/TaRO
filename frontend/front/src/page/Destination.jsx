@@ -1,32 +1,45 @@
 import React, { useState } from "react";
-//import { useNavigate } from "react-router-dom"
 import Map from "../components/Map";
-import RadioRe from "../components/Radio_relationship";
+//import RadioRe from "../components/Radio_relationship";
 import Radio from "../components/Radio";
 
-const options = [
-  { value: "option1", label: "Option 1" },
-  { value: "option2", label: "Option 2" },
-  { value: "option3", label: "Option 3" },
+const options1 = [
+  { value: "option1", label: "食べ歩き" },
+  { value: "option2", label: "観光名所巡り" },
+];
+
+const options2 = [
+  { value: "option1", label: "5分" },
+  { value: "option2", label: "10分" },
+  { value: "option2", label: "15分" },
 ];
 
 const Destination = () => {
-  const [selectedOption, setSelectedOption] = useState(options[0].value);
+  const [selectedOption1, setSelectedOption1] = useState(options1[0].value);
+  const [selectedOption2, setSelectedOption2] = useState(options2[0].value);
 
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
+  const handleOptionChange1 = (event) => {
+    setSelectedOption1(event.target.value);
+  };
+
+  const handleOptionChange2 = (event) => {
+    setSelectedOption2(event.target.value);
   };
 
   return (
     <div className="Destination">
-      <Radio
-        options={options}
-        selectedOption={selectedOption}
-        onOptionChange={handleOptionChange}
-      />
-      <p>Selected option: {selectedOption}</p>
       <Map />
-      <RadioRe />
+      <Radio
+        options={options1}
+        selectedOption={selectedOption1}
+        onOptionChange={handleOptionChange1}
+      />
+      <br />
+      <Radio
+        options={options2}
+        selectedOption={selectedOption2}
+        onOptionChange={handleOptionChange2}
+      />
     </div>
   );
 };

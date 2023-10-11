@@ -1,16 +1,11 @@
-import './App.css';
+import "./App.css";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-  } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-import Home from "./page/Home"
-import  Set_op  from "./page/Setting_op.js";
-import  Set  from "./page/setting.js";
-import  Destination  from "./page/Destination.js";
+import Home from "./page/Home";
+import Set_op from "./page/Setting_op.jsx";
+import Set from "./page/setting.jsx";
+import Destination from "./page/Destination.jsx";
 
 function App() {
   return (

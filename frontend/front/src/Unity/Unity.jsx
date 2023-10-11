@@ -1,16 +1,45 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
-import './Unity.css';
 
 function App() {
-  const { unityProvider } = useUnityContext({
-    loaderUrl: "build/build_v1.0.loader.js",
-    dataUrl: "build/build_v1.0.data",
-    frameworkUrl: "build/build_v1.0.framework.js",
-    codeUrl: "build/build_v1.0.wasm",
+  const { unityProvider, sendMessage } = useUnityContext({
+    loaderUrl: "build/build_v1.1.loader.js",
+    dataUrl: "build/build_v1.1.data",
+    frameworkUrl: "build/build_v1.1.framework.js",
+    codeUrl: "build/build_v1.1.wasm",
   });
 
-  return <Unity unityProvider={unityProvider}  className="Unity"/>;
+  function awake() {
+    sendMessage("ChatdollKitVRM", "awake");
+  }
+  function setting() {
+    sendMessage("ChatdollKitVRM", "setting");
+  }
+  function start() {
+    sendMessage("ChatdollKitVRM", "start");
+  }
+  function rootSearch() {
+    sendMessage("ChatdollKitVRM", "rootSearch");
+  }
+  function finishRootSearch() {
+    sendMessage("ChatdollKitVRM", "finishRootSearch");
+  }
+  function decideRoot() {
+    sendMessage("ChatdollKitVRM", "decideRoot");
+  }
+  function move() {
+    sendMessage("ChatdollKitVRM", "move",1);
+  }
+  function arrive() {
+    sendMessage("ChatdollKitVRM", "arrive","金閣寺");
+  }
+
+  return (
+    <Fragment>
+      <Unity unityProvider={unityProvider} />
+      <button onClick={setting}>Setting</button>
+    </Fragment>
+  );
 }
 
 export default App;

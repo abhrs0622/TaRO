@@ -4,10 +4,10 @@ import './Unity.css';
 
 function App() {
   const { unityProvider } = useUnityContext({
-    loaderUrl: "build/build_connect_to_backend.loader.js",
-    dataUrl: "build/build_connect_to_backend.data",
-    frameworkUrl: "build/build_connect_to_backend.framework.js",
-    codeUrl: "build/build_connect_to_backend.wasm",
+    loaderUrl: "build/build_v1.0.loader.js",
+    dataUrl: "build/build_v1.0.data",
+    frameworkUrl: "build/build_v1.0.framework.js",
+    codeUrl: "build/build_v1.0.wasm",
   });
 
   return <Unity unityProvider={unityProvider}  className="Unity"/>;

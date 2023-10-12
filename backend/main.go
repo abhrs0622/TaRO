@@ -16,6 +16,7 @@ var ginLambda *ginadapter.GinLambda
 func init() {
 	router := gin.Default()
 	router.GET("/avatar", handlers.Avatar)
+	router.GET("/map", handlers.Map)
 
 	router.Run("localhost:8080")
 

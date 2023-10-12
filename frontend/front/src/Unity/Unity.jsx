@@ -32,11 +32,11 @@ function App() {
       removeEventListener("startSpeakTime", handleStartTime);
     };
   }, [addEventListener, removeEventListener, handleStartTime]);
-
+  const googleApiKey = "";
   function configUnityApi() {
-    sendMessage("ChatdollKitVRM", "googleApiKey", "AIzaSyAgwA_FF52h7Fl8TFK19E5cAWyG4H7ri0k");
-    sendMessage("ChatdollKitVRM", "WakewordGoogleApiKey", "AIzaSyAgwA_FF52h7Fl8TFK19E5cAWyG4H7ri0k");
-    sendMessage("ChatdollKitVRM", "RequestProviderGoogleApyKey", "AIzaSyAgwA_FF52h7Fl8TFK19E5cAWyG4H7ri0k");
+    sendMessage("ChatdollKitVRM", "googleApiKey", googleApiKey);
+    sendMessage("ChatdollKitVRM", "WakewordGoogleApiKey", googleApiKey);
+    sendMessage("ChatdollKitVRM", "RequestProviderGoogleApyKey", googleApiKey);
     sendMessage("ChatdollKitVRM", "backendApiServerUrl", "http://127.0.0.1:5000");
     sendMessage("ChatdollKitVRM", "VoicevoxEndpointUrl", "http://localhost:50021");
   }

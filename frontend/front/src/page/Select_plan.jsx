@@ -1,12 +1,12 @@
 import React from "react";
-import ApiCaller from "../components/ApiCaller";
+import GET from "../components/ApiGet";
 import Button from "../components/Button";
 
 const Select_plan = () => {
   return (
     <div>
       <Button to="/Destination" label="back page" />
-      <ApiCaller url={"https://official-joke-api.appspot.com/jokes/random"} />
+      <GET url={"https://official-joke-api.appspot.com/jokes/random"} />
     </div>
   );
 };

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function ApiCaller({ url }) {
+function ApiPost({ url, requestData }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // API呼び出し
+    // POSTリクエスト
     axios
-      .get(url)
+      .post(url, requestData)
       .then((response) => {
         setData(response.data);
         setLoading(false);
@@ -18,7 +18,7 @@ function ApiCaller({ url }) {
         setError(err);
         setLoading(false);
       });
-  }, [url]);
+  }, [url, requestData]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -33,4 +33,4 @@ function ApiCaller({ url }) {
   }
 }
 
-export default ApiCaller;
+export default ApiPost;

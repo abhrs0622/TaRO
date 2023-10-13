@@ -1,7 +1,9 @@
+// マップ表示部分
 import React, { useState } from "react";
 import Map from "../components/Map";
 //import RadioRe from "../components/Radio_relationship";
 import Radio from "../components/Radio";
+import Button from "../components/Button";
 
 const options1 = [
   { value: "option1", label: "食べ歩き" },
@@ -28,6 +30,7 @@ const Destination = () => {
 
   return (
     <div className="Destination">
+      <Button to="/setting" label="back page" />
       <Map />
       <Radio
         options={options1}
@@ -40,6 +43,7 @@ const Destination = () => {
         selectedOption={selectedOption2}
         onOptionChange={handleOptionChange2}
       />
+      <Button to="/Select" label="next page" />
     </div>
   );
 };

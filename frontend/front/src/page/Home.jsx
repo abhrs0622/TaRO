@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import StartButton from "../components/StartButton";
-import SetButton from "../components/SetButton";
+// import StartButton from "../components/StartButton";
+// import SetButton from "../components/SetButton";
 import Button from "../components/Button";
 
 function Home() {

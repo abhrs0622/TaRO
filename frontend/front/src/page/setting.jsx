@@ -27,6 +27,8 @@ const Setting = () => {
 
   return (
     <div>
+      <Button to="/" label="back page" />
+      <br />
       名前
       <br />
       アバターとの関係性

@@ -6,10 +6,10 @@ function App() {
   const [startTime, setStartTime] = useState();
 
   const { unityProvider, sendMessage, addEventListener, removeEventListener } = useUnityContext({
-    loaderUrl: "build/build_v1.9.loader.js",
-    dataUrl: "build/build_v1.9.data",
-    frameworkUrl: "build/build_v1.9.framework.js",
-    codeUrl: "build/build_v1.9.wasm",
+    loaderUrl: "build/build_v2.5.loader.js",
+    dataUrl: "build/build_v2.5.data",
+    frameworkUrl: "build/build_v2.5.framework.js",
+    codeUrl: "build/build_v2.5.wasm",
   });
 
   const handleText = useCallback((text) => {
@@ -32,16 +32,20 @@ function App() {
       removeEventListener("startSpeakTime", handleStartTime);
     };
   }, [addEventListener, removeEventListener, handleStartTime]);
-  const googleApiKey = "";
+
+  const googleApiKey = process.env.REACT_APP_GOOGLE_RECOGNITION_API_KEY;
+  const backendApiServerUrl = process.env.REACT_APP_BACKEND_API_SERVER_URL;
+  const VoicevoxEndpointUrl = process.env.REACT_APP_VOICEVOX_ENDPOINT_URL;
   function configUnityApi() {
     sendMessage("ChatdollKitVRM", "googleApiKey", googleApiKey);
     sendMessage("ChatdollKitVRM", "WakewordGoogleApiKey", googleApiKey);
     sendMessage("ChatdollKitVRM", "RequestProviderGoogleApyKey", googleApiKey);
-    sendMessage("ChatdollKitVRM", "backendApiServerUrl", "http://127.0.0.1:5000");
-    sendMessage("ChatdollKitVRM", "VoicevoxEndpointUrl", "http://localhost:50021");
+    sendMessage("ChatdollKitVRM", "backendApiServerUrl", backendApiServerUrl);
+    sendMessage("ChatdollKitVRM", "VoicevoxEndpointUrl", VoicevoxEndpointUrl);
   }
 
   configUnityApi();
+
 
   function awake() {
     sendMessage("ChatdollKitVRM", "awake");
@@ -64,13 +68,18 @@ function App() {
   function decideRoot() {
     sendMessage("ChatdollKitVRM", "decideRoot");
   }
+  const moveSectionId = 1;
   function move() {
-    sendMessage("ChatdollKitVRM", "move", 1);
+    sendMessage("ChatdollKitVRM", "move", moveSectionId);
   }
+  const arrivePlace = "金閣寺";
   function arrive() {
-    sendMessage("ChatdollKitVRM", "arrive", "金閣寺");
+    sendMessage("ChatdollKitVRM", "arrive", arrivePlace);
   }
-
+  const userMessage = "メッセージ";
+  function sendMessageToAvatar() {
+    sendMessage("ChatdollKitVRM", "sendMessageToAvatar", userMessage);
+  }
   return (
     <Fragment>
       <Unity unityProvider={unityProvider} />

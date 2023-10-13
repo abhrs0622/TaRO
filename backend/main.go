@@ -17,6 +17,7 @@ func init() {
 	router := gin.Default()
 	router.GET("/avatar", handlers.Avatar)
 	router.GET("/map", handlers.Map)
+	router.GET("/information", handlers.Infomation)
 
 	router.Run("localhost:8080")
 

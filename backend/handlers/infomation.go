@@ -1,10 +1,9 @@
 package handlers
 
 import (
+	//"net/http"
 	"context"
-	"encoding/json"
 	"fmt"
-	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/sashabaranov/go-openai"
@@ -14,21 +13,17 @@ import (
 //　json形式で地名を受け取り，一度chatGPTのAPIに「（地名）に関連した豆知識を教えて」という文章をPOSTし，返ってきた文章をjson形式で返す
 
 func Infomation(c *gin.Context) {
+
+	//chatGPTのAPIを叩くためのAPIキー
+	API_KEY := "YOUR_API_KEY"
+
 	// 地名を受け取る
-	place := c.PostForm("place")
+	// place := c.PostForm("place")
+	place := "東京" // テスト用
 
 	// chatGPTのAPIにPOSTする
-	type RequestBody struct {
-		Text string `json:"text"`
-	}
-	reqBody := RequestBody{Text: place + "に関連した豆知識を教えて"}
-	reqBodyBytes, err := json.Marshal(reqBody)
-	if err != nil {
-		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": "failed to marshal request body"})
-		return
-	}
 
-	client := openai.NewClient("YOUR_API_KEY")
+	client := openai.NewClient(API_KEY)
 	resp, err := client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{
@@ -36,7 +31,7 @@ func Infomation(c *gin.Context) {
 			Messages: []openai.ChatCompletionMessage{
 				{
 					Role:    openai.ChatMessageRoleUser,
-					Content: "Hello!",
+					Content: "「" + place + "」に関連した豆知識を教えて",
 				},
 			},
 		},
@@ -49,5 +44,5 @@ func Infomation(c *gin.Context) {
 
 	fmt.Println(resp.Choices[0].Message.Content)
 	// ここで返ってきた文章をjson形式で返す
-	c.IndentedJSON(http.StatusOK, gin.H{"message": "handlers test"})
+	// c.IndentedJSON(http.StatusOK, gin.H{"message": "handlers test"})
 }

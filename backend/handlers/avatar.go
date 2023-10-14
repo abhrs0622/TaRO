@@ -45,10 +45,9 @@ func Avatar(c *gin.Context) {
 	re := regexp.MustCompile(`移動中、.*`)
 	if re.MatchString(contents) {
 		place := strings.Split(contents, "、")[1]
-		contents = place
+		contents = Infomation(place)
 		animation = "03"
 		animationTime = "1.5"
-		Test()
 	}
 	//"到着、(place)"
 	re = regexp.MustCompile(`到着、.*`)

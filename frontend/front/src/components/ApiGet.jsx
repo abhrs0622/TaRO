@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Plan from "./GET/Plan";
 
 function ApiGet({ url }) {
   const [data, setData] = useState(null);
@@ -29,7 +30,8 @@ function ApiGet({ url }) {
   }
 
   if (data) {
-    return <div>{JSON.stringify(data)}</div>;
+    return <div>
+      <Plan data={data}/></div>;
   }
 }
 

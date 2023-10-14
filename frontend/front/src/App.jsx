@@ -7,6 +7,7 @@ import Destination from "./page/Destination.jsx";
 import SelectPlan from "./page/Select_plan.jsx";
 import DirectionRec from "./page/Route_rec.jsx";
 import Load from "./page/Load.jsx";
+import Sightseeing from "./page/Sightseeing";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/Select" element={<SelectPlan />} />
           <Route path="/Rec" element={<DirectionRec />} />
           <Route path="/Load" element={<Load />} />
+          <Route path="/Sightseeing" element={<Sightseeing/>} />
         </Routes>
       </Router>
     </div>

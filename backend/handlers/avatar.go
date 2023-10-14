@@ -88,7 +88,3 @@ func Avatar(c *gin.Context) {
 	})
 }
 */
-
-func Test() {
-	fmt.Println("hi")
-}

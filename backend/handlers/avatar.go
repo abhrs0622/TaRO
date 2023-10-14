@@ -10,20 +10,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-/*
-func Avatar(c *gin.Context) {
-	// 送信されたリクエストデータからアバターの名前とアバターとの関係性をJSONにして返す
-	name := c.PostForm("name")
-	relationship := c.PostForm("relationship")
-	id := c.PostForm("id")
-	cource := c.PostForm("cource")
-	c.IndentedJSON(http.StatusCreated, gin.H{
-		"name":         name,
-		"relationship": relationship,
-	})
-}
-*/
-
 // 仮の関数です
 func Avatar(c *gin.Context) {
 	contents := c.Query("text")
@@ -89,3 +75,17 @@ func Avatar(c *gin.Context) {
 		"animationTime": animationTime,
 	})
 }
+
+/*
+func Avatar(c *gin.Context) {
+	// 送信されたリクエストデータからアバターの名前とアバターとの関係性をJSONにして返す
+	name := c.PostForm("name")
+	relationship := c.PostForm("relationship")
+	id := c.PostForm("id")
+	cource := c.PostForm("cource")
+	c.IndentedJSON(http.StatusCreated, gin.H{
+		"name":         name,
+		"relationship": relationship,
+	})
+}
+*/

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Plan from "./GET/Plan";
 
-function ApiCaller({ url }) {
+function ApiGet({ url }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -29,8 +30,9 @@ function ApiCaller({ url }) {
   }
 
   if (data) {
-    return <div>{JSON.stringify(data)}</div>;
+    return <div>
+      <Plan data={data}/></div>;
   }
 }
 
-export default ApiCaller;
+export default ApiGet;

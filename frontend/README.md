@@ -8,6 +8,8 @@
   + npm install react-router-dom
 + API 取得のためのコンポーネント
   + npm install axios
++  Yotube
+   +  npm install react-youtube
 
 ## page 
 + Home.jsx

@@ -20,36 +20,36 @@ func Avatar(c *gin.Context) {
 
 	if contents == "settings..." {
 		contents = "こんにちは.あなたの名前を教えてね！"
-		animation = "10"
-		animationTime = "1.5"
+		animation = "01"
+		animationTime = "2.5"
 	}
 	if contents == "スタート" {
 		contents = "旅行する場所を決めよう！"
-		animation = "03"
+		animation = "01"
 		animationTime = "1.5"
 	}
 	if contents == "検索" {
 		contents = "ルートを探してみるから、ちょっと待っててね。"
-		animation = "03"
-		animationTime = "1.5"
+		animation = "05"
+		animationTime = "2.5"
 	}
 	if contents == "検索完了" {
-		contents = "どのプランがいいかな"
-		animation = "03"
+		contents = "どのプランがいいかなー？"
+		animation = "02"
 		animationTime = "1.5"
 	}
 	if contents == "決定" {
-		contents = "良いプランだね.旅行するのが楽しみ！"
-		animation = "03"
-		animationTime = "1.5"
+		contents = "いいプランだと思うよ！旅行するのが楽しみだね！"
+		animation = "05"
+		animationTime = "3.5"
 	}
 	//"移動中、(place)"
 	re := regexp.MustCompile(`移動中、.*`)
 	if re.MatchString(contents) {
 		place := strings.Split(contents, "、")[1]
 		contents = AvatarInfomation(place)
-		animation = "03"
-		animationTime = "1.5"
+		animation = "09"
+		animationTime = "3.0"
 	}
 	//"到着、(place)"
 	re = regexp.MustCompile(`到着、.*`)
@@ -64,8 +64,8 @@ func Avatar(c *gin.Context) {
 	if re.MatchString(contents) {
 		message := strings.Split(contents, "、")[1]
 		contents = message
-		animation = "03"
-		animationTime = "1.5"
+		animation = "10"
+		animationTime = "2.0"
 	}
 
 	c.JSON(http.StatusOK, gin.H{

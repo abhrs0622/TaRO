@@ -46,12 +46,15 @@ func Avatar(c *gin.Context) {
 		animationTime = "3.5"
 	}
 	//"移動中、(place)"
-	re := regexp.MustCompile(`移動中、.*`)
+	//引数：[関係性，名前，場所]
+	re := regexp.MustCompile(`移動中、.*、.*、.*`)
 	if re.MatchString(contents) {
-		place := strings.Split(contents, "、")[1]
-		contents = AvatarInfomation(place)
+		relationCode := strings.Split(contents, "、")[1]
+		userName := strings.Split(contents, "、")[2]
+		place := strings.Split(contents, "、")[3]
+		contents = AvatarInfomation(relationCode, userName, place)	
 		animation = "09"
-		animationTime = "3.0"
+		animationTime = "6.0"
 	}
 	//"到着、(place)"
 	re = regexp.MustCompile(`到着、.*`)
@@ -75,12 +78,11 @@ func Avatar(c *gin.Context) {
 		"memory":        contents,
 		"animation":     animation,
 		"animationTime": animationTime,
-		"Access-Control-Allow-Origin": "*", //CORS回避
 	})
 }
 
 // handlers.Informationと同じ処理
-func AvatarInfomation(place string) string {
+func AvatarInfomation(relationCode string, userName string, place string) string {
 
 	// ．envファイルを読み込む
 	err := godotenv.Load(".env")
@@ -89,6 +91,15 @@ func AvatarInfomation(place string) string {
 	if err != nil {
 		fmt.Printf("読み込み出来ませんでした: %v", err)
 	} 
+
+	var relation string
+	if relationCode == "1" {
+		relation = "恋人"
+	} else if relationCode == "2" {
+		relation = "友人"
+	} else if relationCode == "3" {
+		relation = "推し"
+	}
 	
 	//chatGPTのAPIを叩くためのAPIキー
 	API_KEY := os.Getenv("YOUR_API_KEY")
@@ -103,7 +114,7 @@ func AvatarInfomation(place string) string {
 			Messages: []openai.ChatCompletionMessage{
 				{
 					Role:    openai.ChatMessageRoleUser,
-					Content: "「" + place + "」に関連した豆知識を50字程度・標準語・女の子口調で教えて",
+					Content: "あなたは"+ userName + "さんの" + relation + "です。" + place + "に関する豆知識を" + userName + "さんに20字程度で教えてあげてください。口調は"+ relation + "という関係を意識してください。",
 				},
 			},
 		},

@@ -5,7 +5,7 @@ import { GetUnityFunctions } from "./UnityService";
 import "./Unity.css";
 
 let actionStatus = { "setting": false, "start": false, "rootSearch": false, "finishPootSearch": false, "decideRoot": false, "move": false, "arrive": false };
-let moveSectionId = 1;
+let moveSectionPlace = "金閣寺";
 let arrivePlace = "金閣寺";
 let userMessage = "メッセージ";
 //AvatarActions.changeAllStatus(false);
@@ -80,7 +80,7 @@ export function Avatar() {
         <button id="rootSearchHiddenButton" onClick={() => AvatarActions.rootSearch(sendMessage)}>Setting</button>
         <button id="finishRootSearchHiddenButton" onClick={() => AvatarActions.finishRootSearch(sendMessage)}>Setting</button>
         <button id="decideRootHiddenButton" onClick={() => AvatarActions.decideRoot(sendMessage)}>Setting</button>
-        <button id="moveHiddenButton" onClick={() => AvatarActions.move(sendMessage, moveSectionId)}>Setting</button>
+        <button id="moveHiddenButton" onClick={() => AvatarActions.move(sendMessage, moveSectionPlace)}>Setting</button>
         <button id="ariveHiddenButton" onClick={() => AvatarActions.arrive(sendMessage, arrivePlace)}>Setting</button>
 
         <button style={{ visibility: buttonVisibility }}>next</button>

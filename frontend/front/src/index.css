@@ -2,6 +2,31 @@ body {
   width: 100%;
   margin: 0;
   text-align: center;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #141414;
+  font-size: 18px;
+}
+
+button {
+  height: 30px;
+  font-weight: bold;
+  font-size: large;
+  width: 45%;
+  background-color: #141414;
+  color: #f3f2f2;
+}
+
+.buttonParent {
+  display: flex;
+  justify-content: center;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.radioButton {
+  accent-color: black;
 }
 
 /*スクロールバー*/
@@ -29,9 +54,48 @@ body {
   overflow-y: scroll;
 }
 
+
+/*home*/
+.home {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+}
+
+.home h1 {
+  margin-top: 40vh;
+}
+
 .wrap {
   display: flex;
   justify-content: center;
+}
+
+/*setting*/
+.setting {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+.setting * {
+  margin: auto 0 auto;
+}
+
+.setting h2 {
+  padding-bottom: 15px;
+  font-size: larger;
+}
+
+.setting .radioButton {
+  background-color: #eeeeee;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.setting .radioButton {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 /*アバター画面*/
@@ -52,9 +116,7 @@ body {
   background-color: #eaeaea;
   border-radius: 20px;
   height: 30vh;
-  font-family: 'Lora', serif;
-  font-family: 'M PLUS 1p', sans-serif;
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
   display: table;
 }
 

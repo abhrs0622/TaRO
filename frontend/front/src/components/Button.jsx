@@ -10,7 +10,7 @@ const Button = ({ to, label, hiddenButtonId }) => {
   };
 
 
-  return <button onClick={handleClick}>{label}</button>;
+  return <div className="buttonParent"><button onClick={handleClick}>{label}</button></div>;
 };
 
 export default Button;

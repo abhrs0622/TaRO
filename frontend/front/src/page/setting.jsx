@@ -26,24 +26,24 @@ const Setting = () => {
   };
 
   return (
-    <div>
-      名前
-      <br />
-      アバターとの関係性
-      <br />
-      <Radio
-        options={options1}
-        selectedOption={selectedOption1}
-        onOptionChange={handleOptionChange1}
-      />
-      <br />
-      コース内容
-      <br />
-      <Radio
-        options={options2}
-        selectedOption={selectedOption2}
-        onOptionChange={handleOptionChange2}
-      />
+    <div className="setting">
+      <div className="username"><h2>名前</h2></div>
+      <div className="relationship"><h2>
+        アバターとの関係性
+      </h2>
+        <Radio
+          options={options1}
+          selectedOption={selectedOption1}
+          onOptionChange={handleOptionChange1}
+        /></div>
+      <div className="course"><h2>
+        コース内容
+      </h2>
+        <Radio
+          options={options2}
+          selectedOption={selectedOption2}
+          onOptionChange={handleOptionChange2}
+        /></div>
       <br />
       map設定へgo
       <br />

@@ -1,13 +1,63 @@
 body {
+  width: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/*スクロールバー*/
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b6b5b5;
+  border-radius: 5px;
+}
+
+/*画面分割*/
+#root {
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+}
+
+/*観光画面*/
+.App {
+  height: 99vh;
+  width: 52vw;
+  overflow-y: scroll;
+}
+
+.wrap {
+  display: flex;
+  justify-content: center;
+}
+
+/*アバター画面*/
+.Avatar {
+  height: 99vh;
+  width: 42vw;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+}
+
+.AvatarCanvas {
+  height: 60vh;
+}
+
+.AvatarText {
+  background-color: #eaeaea;
+  border-radius: 20px;
+  height: 30vh;
+  font-family: 'Lora', serif;
+  font-family: 'M PLUS 1p', sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
+  display: table;
+}
+
+.AvatarText * {
+  display: table-cell;
+  vertical-align: middle;
 }

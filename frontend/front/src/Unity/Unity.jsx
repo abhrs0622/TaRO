@@ -6,7 +6,7 @@ let actionStatus = { "setting": false, "start": false, "rootSearch": false, "fin
 let moveSectionId = 1;
 let arrivePlace = "金閣寺";
 let userMessage = "メッセージ";
-AvatarActions.changeAllStatus(false);
+//AvatarActions.changeAllStatus(false);
 
 export function Avatar() {
 
@@ -132,8 +132,9 @@ export function Avatar() {
 
   const displayNextButton = () => {
     setTimeout(function () {
-      console.log("ボタン表示処理");
+      console.log("ボタン表示関数");
       if (actionStatus.setting == true) {
+        console.log("ボタン表示処理")
         setButtonVisibility('visible');
       }
     }, waitTimeFromStartVoice);
@@ -142,10 +143,11 @@ export function Avatar() {
   return (
     <Fragment>
       <div class="Avatar">
-        <div><p>{`${text}`}</p></div>
-        <Unity unityProvider={unityProvider} />
         <button onClick={() => AvatarActions.setting(sendMessage)}>Setting</button>
         <button style={{ visibility: buttonVisibility }}>next</button>
+        <div className="AvatarText"><p>{`${text}`}</p></div>
+        <Unity unityProvider={unityProvider} className="AvatarCanvas" />
+
       </div>
     </Fragment>
   );

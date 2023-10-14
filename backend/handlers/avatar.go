@@ -3,15 +3,17 @@ package handlers
 import (
 	"context"
 	"fmt"
+	"os"
 	"net/http"
 	"regexp"
 	"strings"
-
+	"github.com/joho/godotenv" //環境変数(.env)を読み込む
 	"github.com/gin-gonic/gin"
 	"github.com/sashabaranov/go-openai"
 )
 
 func Avatar(c *gin.Context) {
+
 	contents := c.Query("text")
 	animation := "03"      // "01"~"10"
 	animationTime := "1.0" // 小数点第一位まで
@@ -79,8 +81,16 @@ func Avatar(c *gin.Context) {
 // handlers.Informationと同じ処理
 func AvatarInfomation(place string) string {
 
+	// ．envファイルを読み込む
+	err := godotenv.Load(".env")
+	
+	// もし err がnilではないなら、"読み込み出来ませんでした"が出力されます。
+	if err != nil {
+		fmt.Printf("読み込み出来ませんでした: %v", err)
+	} 
+	
 	//chatGPTのAPIを叩くためのAPIキー
-	API_KEY := "YOUR_API_KEY"
+	API_KEY := os.Getenv("YOUR_API_KEY")
 
 	// chatGPTのAPIにPOSTする
 
@@ -92,7 +102,7 @@ func AvatarInfomation(place string) string {
 			Messages: []openai.ChatCompletionMessage{
 				{
 					Role:    openai.ChatMessageRoleUser,
-					Content: "「" + place + "」に関連した豆知識を教えて",
+					Content: "「" + place + "」に関連した豆知識を50字程度・標準語・ギャル口調で教えて",
 				},
 			},
 		},

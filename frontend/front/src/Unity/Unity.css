@@ -1,3 +1,5 @@
-.Unity {
-    width: 100%;
+.Avatar button {
+    visibility: hidden;
+    position: fixed;
+    bottom: 100vh;
 }

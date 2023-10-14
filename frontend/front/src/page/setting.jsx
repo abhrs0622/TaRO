@@ -47,7 +47,7 @@ const Setting = () => {
       <br />
       map設定へgo
       <br />
-      <Button to="/Destination" label="next page" />
+      <Button to="/Destination" label="next page" hiddenButtonId="startHiddenButton" />
     </div>
   );
 };

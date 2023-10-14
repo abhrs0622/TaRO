@@ -2,6 +2,7 @@ import React, { Fragment, useState, useCallback, useEffect } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
 import * as AvatarActions from "./AvatarActions";
 import { GetUnityFunctions } from "./UnityService";
+import "./Unity.css";
 
 let actionStatus = { "setting": false, "start": false, "rootSearch": false, "finishPootSearch": false, "decideRoot": false, "move": false, "arrive": false };
 let moveSectionId = 1;
@@ -74,7 +75,14 @@ export function Avatar() {
   return (
     <Fragment>
       <div className="Avatar">
-        <button onClick={() => AvatarActions.setting(sendMessage)}>Setting</button>
+        <button id="settingHiddenButton" onClick={() => AvatarActions.setting(sendMessage)}>Setting</button>
+        <button id="startHiddenButton" onClick={() => AvatarActions.start(sendMessage)}>Setting</button>
+        <button id="rootSearchHiddenButton" onClick={() => AvatarActions.rootSearch(sendMessage)}>Setting</button>
+        <button id="finishRootSearchHiddenButton" onClick={() => AvatarActions.finishRootSearch(sendMessage)}>Setting</button>
+        <button id="decideRootHiddenButton" onClick={() => AvatarActions.decideRoot(sendMessage)}>Setting</button>
+        <button id="moveHiddenButton" onClick={() => AvatarActions.move(sendMessage, moveSectionId)}>Setting</button>
+        <button id="ariveHiddenButton" onClick={() => AvatarActions.arrive(sendMessage, arrivePlace)}>Setting</button>
+
         <button style={{ visibility: buttonVisibility }}>next</button>
         <div className="AvatarText"><p>{`${text}`}</p></div>
         <Unity unityProvider={unityProvider} className="AvatarCanvas" />

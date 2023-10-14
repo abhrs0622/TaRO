@@ -7,11 +7,7 @@ import { setting } from "../Unity/AvatarActions";
 import { GetUnityFunctions } from "../Unity/UnityService";
 
 function Home() {
-  const { sendMessage } = GetUnityFunctions();
-
-  const handleAvatarAction = () => {
-    setting(sendMessage);
-  }
+  const { unityProvider, sendMessage, addEventListener, removeEventListener } = GetUnityFunctions();
 
   return (
     <div className="home">
@@ -20,7 +16,7 @@ function Home() {
       <Link to="/setting">Setting</Link>
       {/* <StartButton />
       <SetButton /> */}
-      <Button to="/setting" label="next page" avatarAction={handleAvatarAction} />
+      <Button to="/setting" label="next page" hiddenButtonId={"settingHiddenButton"} />
     </div>
   );
 }

@@ -102,7 +102,7 @@ func AvatarInfomation(place string) string {
 			Messages: []openai.ChatCompletionMessage{
 				{
 					Role:    openai.ChatMessageRoleUser,
-					Content: "「" + place + "」に関連した豆知識を50字程度・標準語・ギャル口調で教えて",
+					Content: "「" + place + "」に関連した豆知識を50字程度・標準語・女の子口調で教えて",
 				},
 			},
 		},

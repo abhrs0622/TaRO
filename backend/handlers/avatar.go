@@ -1,9 +1,8 @@
 package handlers
 
 import (
-	"net/http"
-
 	"fmt"
+	"net/http"
 	"regexp"
 	"strings"
 
@@ -18,28 +17,28 @@ func Avatar(c *gin.Context) {
 	fmt.Println(contents)
 
 	if contents == "settings..." {
-		contents = "こんにちは.あなたの名前を教えてほしい！"
+		contents = "こんにちは.あなたの名前を教えてね！"
 		animation = "10"
 		animationTime = "1.5"
 	}
 	if contents == "スタート" {
 		contents = "旅行する場所を決めよう！"
-		animation = "10"
+		animation = "03"
 		animationTime = "1.5"
 	}
 	if contents == "検索" {
-		contents = "ルートを探してみるから.ちょっと待っててね。"
-		animation = "10"
+		contents = "ルートを探してみるから、ちょっと待っててね。"
+		animation = "03"
 		animationTime = "1.5"
 	}
 	if contents == "検索完了" {
 		contents = "どのプランがいいかな"
-		animation = "10"
+		animation = "03"
 		animationTime = "1.5"
 	}
 	if contents == "決定" {
 		contents = "良いプランだね.旅行するのが楽しみ！"
-		animation = "10"
+		animation = "03"
 		animationTime = "1.5"
 	}
 	//"移動中、(id)"
@@ -47,7 +46,7 @@ func Avatar(c *gin.Context) {
 	if re.MatchString(contents) {
 		id := strings.Split(contents, "、")[1]
 		contents = id
-		animation = "10"
+		animation = "03"
 		animationTime = "1.5"
 	}
 	//"到着、(place)"
@@ -55,7 +54,7 @@ func Avatar(c *gin.Context) {
 	if re.MatchString(contents) {
 		place := strings.Split(contents, "、")[1]
 		contents = place
-		animation = "10"
+		animation = "03"
 		animationTime = "1.5"
 	}
 	//"user、(message)"
@@ -63,7 +62,7 @@ func Avatar(c *gin.Context) {
 	if re.MatchString(contents) {
 		message := strings.Split(contents, "、")[1]
 		contents = message
-		animation = "10"
+		animation = "03"
 		animationTime = "1.5"
 	}
 

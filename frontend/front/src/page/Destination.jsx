@@ -43,7 +43,7 @@ const Destination = () => {
         selectedOption={selectedOption2}
         onOptionChange={handleOptionChange2}
       />
-      <Button to="/Select" label="next page" />
+      <Button to="/Select" label="next page" hiddenButtonId="finishRootSearchHiddenButton" />
     </div>
   );
 };

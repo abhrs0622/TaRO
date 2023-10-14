@@ -9,6 +9,9 @@ const Select_plan = () => {
       <Button to="/Destination" label="back page" />
       <GET url={"https://official-joke-api.appspot.com/jokes/random"} />
       {/* <POST url="https://jsonplaceholder.typicode.com/posts" requestData={{ key: 'value' ,aaa : "test"}} /> */}
+      <Button to="/Rec" label="プランA" hiddenButtonId="decideRootHiddenButton" />
+      <Button to="/Rec" label="プランB" hiddenButtonId="decideRootHiddenButton" />
+      <Button to="/Rec" label="プランC" hiddenButtonId="decideRootHiddenButton" />
     </div>
   );
 };

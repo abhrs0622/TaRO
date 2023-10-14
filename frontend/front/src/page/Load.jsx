@@ -6,7 +6,7 @@ const Load = () => {
   return (
     <div>
       <YouTube />
-      <Button to="" />
+      <Button to="/Sightseeing" label="次の場所へ" hiddenButtonId="arriveHiddenButton" />
     </div>
   )
 }

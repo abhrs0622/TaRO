@@ -5,8 +5,12 @@ import { GetUnityFunctions } from "./UnityService";
 import "./Unity.css";
 
 let actionStatus = { "setting": false, "start": false, "rootSearch": false, "finishPootSearch": false, "decideRoot": false, "move": false, "arrive": false };
+let relationship = "1";
+let username = "ああ";
 let moveSectionPlace = "金閣寺";
 let arrivePlace = "金閣寺";
+let sendMoveSectionPlace = relationship + "、" + username + "、" + moveSectionPlace;
+let sendArrivePlace = relationship + "、" + username + "、" + arrivePlace;
 let userMessage = "メッセージ";
 //AvatarActions.changeAllStatus(false);
 
@@ -80,8 +84,8 @@ export function Avatar() {
         <button id="rootSearchHiddenButton" onClick={() => AvatarActions.rootSearch(sendMessage)}>Setting</button>
         <button id="finishRootSearchHiddenButton" onClick={() => AvatarActions.finishRootSearch(sendMessage)}>Setting</button>
         <button id="decideRootHiddenButton" onClick={() => AvatarActions.decideRoot(sendMessage)}>Setting</button>
-        <button id="moveHiddenButton" onClick={() => AvatarActions.move(sendMessage, moveSectionPlace)}>Setting</button>
-        <button id="ariveHiddenButton" onClick={() => AvatarActions.arrive(sendMessage, arrivePlace)}>Setting</button>
+        <button id="moveHiddenButton" onClick={() => AvatarActions.move(sendMessage, sendMoveSectionPlace)}>Setting</button>
+        <button id="arriveHiddenButton" onClick={() => AvatarActions.arrive(sendMessage, sendArrivePlace)}>Setting</button>
 
         <button style={{ visibility: buttonVisibility }}>next</button>
         <div className="AvatarText"><p>{`${text}`}</p></div>

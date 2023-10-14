@@ -10,7 +10,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// 仮の関数です
 func Avatar(c *gin.Context) {
 	contents := c.Query("text")
 	animation := "03"      // "01"~"10"

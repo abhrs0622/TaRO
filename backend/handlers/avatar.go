@@ -75,6 +75,7 @@ func Avatar(c *gin.Context) {
 		"memory":        contents,
 		"animation":     animation,
 		"animationTime": animationTime,
+		"Access-Control-Allow-Origin": "*", //CORS回避
 	})
 }
 

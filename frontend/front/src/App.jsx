@@ -6,6 +6,7 @@ import Set from "./page/setting.jsx";
 import Destination from "./page/Destination.jsx";
 import SelectPlan from "./page/Select_plan.jsx";
 import DirectionRec from "./page/Route_rec.jsx";
+import Load from "./page/Load.jsx";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/Destination" element={<Destination />} />
           <Route path="/Select" element={<SelectPlan />} />
           <Route path="/Rec" element={<DirectionRec />} />
+          <Route path="/Load" element={<Load />} />
         </Routes>
       </Router>
     </div>

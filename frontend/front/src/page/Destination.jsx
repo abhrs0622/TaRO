@@ -43,7 +43,7 @@ const Destination = () => {
         selectedOption={selectedOption2}
         onOptionChange={handleOptionChange2}
       />
-      <Button to="/Select" label="next page" hiddenButtonId="finishRootSearchHiddenButton" />
+      <Button to="/Select" label="ルート検索" hiddenButtonId="finishRootSearchHiddenButton" />
     </div>
   );
 };

@@ -51,7 +51,3 @@ func Infomation(c *gin.Context) {
 	// ここで返ってきた文章をjson形式で返す
 	c.IndentedJSON(http.StatusOK, gin.H{"message": "handlers test"})
 }
-
-func Test(c *gin.Context) {
-	fmt.Printf("hi")
-}

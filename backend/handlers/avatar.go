@@ -6,7 +6,6 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/abhrs0622/TaRO/handlers"
 	"github.com/gin-gonic/gin"
 )
 
@@ -49,7 +48,7 @@ func Avatar(c *gin.Context) {
 		contents = place
 		animation = "03"
 		animationTime = "1.5"
-		handlers.Test
+		Test()
 	}
 	//"到着、(place)"
 	re = regexp.MustCompile(`到着、.*`)
@@ -89,3 +88,7 @@ func Avatar(c *gin.Context) {
 	})
 }
 */
+
+func Test() {
+	fmt.Println("hi")
+}

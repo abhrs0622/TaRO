@@ -1,15 +1,22 @@
 import React, { useState } from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
+import { useSelector, useDispatch } from "react-redux";
+import { setLatitude } from "../features/latitude/latitudeSlice";
+import { setLongitude } from "../features/longitude/longitudeSlice";
 
 const Map = () => {
+  const latitude = useSelector((state) => state.latitude.value);
+  const longitude = useSelector((state) => state.longitude.value);
+  const dispatch = useDispatch();
+
   const container = {
     width: "75%",
     height: "500px",
   };
 
   const defaultPosition = {
-    lat: 35.182253007459444,
-    lng: 136.90534328438358,
+    lat: latitude,
+    lng: longitude,
   };
 
   const [markerPosition, setMarkerPosition] = useState(defaultPosition);
@@ -20,27 +27,26 @@ const Map = () => {
       lng: e.latLng.lng(),
     };
 
-    // ピンの位置を更新
     setMarkerPosition(clickedLatLng);
-
-    // クリックされた位置の緯度と経度をコンソールに出力
-    console.log("クリックされた位置の緯度:", clickedLatLng.lat);
-    console.log("クリックされた位置の経度:", clickedLatLng.lng);
+    dispatch(setLatitude(e.latLng.lat()));
+    dispatch(setLongitude(e.latLng.lng()));
   };
 
   return (
     <>
       <h2>React_Google Map_Sample</h2>
       <div className="wrap">
-        <LoadScript googleMapsApiKey="AIzaSyDwcIO3U_TFaSghaoAoZHSwN3zpih3uc6E">
+        <LoadScript
+          id="google-map"
+          googleMapsApiKey="AIzaSyDwcIO3U_TFaSghaoAoZHSwN3zpih3uc6E"
+        >
           <GoogleMap
             mapContainerStyle={container}
-            center={defaultPosition}
+            center={markerPosition}
             zoom={15}
             onClick={handleMapClick}
           >
-            {/* ピンを立てる */}
-            <Marker position={markerPosition} />
+            {markerPosition && <MarkerF position={markerPosition} />}
           </GoogleMap>
         </LoadScript>
       </div>

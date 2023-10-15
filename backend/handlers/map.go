@@ -20,15 +20,12 @@ type Schedule struct {
 func Map(c *gin.Context) {
 	value := c.Query("value")
 
-	// ．envファイルを読み込む
 	err := godotenv.Load(".env")
 	
-	// もし err がnilではないなら、"読み込み出来ませんでした"が出力されます。
 	if err != nil {
 		fmt.Printf("読み込み出来ませんでした: %v", err)
 	} 
 	
-	//chatGPTのAPIを叩くためのAPIキー
 	API_KEY := os.Getenv("YOUR_API_KEY")
 
 	client := openai.NewClient(API_KEY)

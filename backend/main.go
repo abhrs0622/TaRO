@@ -21,9 +21,7 @@ func init() {
     router.Use(cors.New(config))
 	router.GET("/avatar", handlers.Avatar)
 	router.GET("/map", handlers.Map)
-	router.GET("/information", handlers.Infomation)
 
-	// router.Use(cors.Default())
 	router.Run("localhost:8080")
 
 	// ginLambda = ginadapter.New(router)

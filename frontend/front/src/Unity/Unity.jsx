@@ -86,8 +86,7 @@ export function Avatar() {
         <button id="decideRootHiddenButton" onClick={() => AvatarActions.decideRoot(sendMessage)}>Setting</button>
         <button id="moveHiddenButton" onClick={() => AvatarActions.move(sendMessage, sendMoveSectionPlace)}>Setting</button>
         <button id="arriveHiddenButton" onClick={() => AvatarActions.arrive(sendMessage, sendArrivePlace)}>Setting</button>
-
-        <button style={{ visibility: buttonVisibility }}>next</button>
+        <button id="HiddenButton">hidden</button>
         <div className="AvatarText"><p>{`${text}`}</p></div>
         <Unity unityProvider={unityProvider} className="AvatarCanvas" />
 

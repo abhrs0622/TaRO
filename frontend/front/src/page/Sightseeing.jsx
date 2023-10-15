@@ -12,7 +12,7 @@ const Sightseeing = () => {
     <div>
       <Street />
       <Button to="/Load" label="次の場所へ" hiddenButtonId="moveHiddenButton" />
-      <button onClick={() => handleClick("/")}>終了</button>
+      <Button to="/" label="終了" hiddenButtonId="HiddenButton" />
     </div>
   )
 }

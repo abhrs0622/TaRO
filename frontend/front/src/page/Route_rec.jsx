@@ -6,7 +6,6 @@ import Button from "../components/Button";
 const Route_rec = () => {
   return (
     <div>
-      <Direction />
       <Button to="/Load" label="go" hiddenButtonId="moveHiddenButton" />
     </div>
   );

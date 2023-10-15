@@ -9,7 +9,6 @@ function Home() {
   return (
     <div className="home">
       <h1>TabitaRO</h1>
-      <Link to="/setting">Setting</Link>
       {/* <StartButton />
       <SetButton /> */}
       <Button to="/setting" label="start" hiddenButtonId={"settingHiddenButton"} />

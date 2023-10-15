@@ -34,7 +34,6 @@ const Map = () => {
 
   return (
     <>
-      <h2>React_Google Map_Sample</h2>
       <div className="wrap">
         <LoadScript
           id="google-map"

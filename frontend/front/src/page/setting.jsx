@@ -64,7 +64,6 @@ const Setting = () => {
           value={inputText} // 入力ボックスの値をstateから取得
           onChange={handleInputChange} // テキストが変更されたときのハンドラー
         />
-        <p>入力された文字: {inputText}</p> {/* 変数に格納された文字を表示 */}
       </div>
       <div className="relationship">
         <h2>アバターとの関係性</h2>
@@ -87,7 +86,6 @@ const Setting = () => {
         label="next page"
         hiddenButtonId="startHiddenButton"
       />
-      {handlePostRequest()}
     </div>
   );
 };

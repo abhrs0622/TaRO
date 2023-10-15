@@ -40,7 +40,7 @@ const Course = ({ id, plans, xy, hiddenButtonId }) => {
   };
 
   return (
-    <button style={boxStyle} onClick={handleClick}>
+    <button className="plan" style={boxStyle} onClick={handleClick}>
       <span>{id}</span>
       {(() => {
         const items = [];

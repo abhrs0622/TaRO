@@ -93,6 +93,16 @@ button:hover {
   border-radius: 20px;
 }
 
+.plan {
+  background-color: #b6b5b5;
+  border: none;
+  margin: auto;
+}
+
+.plan :hover {
+  cursor: pointer;
+}
+
 .setting .radioButton {
   display: flex;
   justify-content: space-evenly;

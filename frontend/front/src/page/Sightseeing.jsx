@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import Street from "../components/StreetView";
 import Button from "../components/Button";
+import Streetview from 'react-google-streetview';
+import { useSelector, useDispatch } from "react-redux";
+
 
 const Sightseeing = () => {
-  const position = [[33.56793280754822, 133.6677199608504], [34.344327666436314, 134.0426996864438], [38.265074709977505, 134.24368309932896]]; // 位置情報の配列
+  const coordinate = useSelector((state) => state.coordinate.value);
+  const position = [[parseFloat(coordinate[0][0]), parseFloat(coordinate[0][1])], [parseFloat(coordinate[1][0]), parseFloat(coordinate[1][1])], [parseFloat(coordinate[2][0]), parseFloat(coordinate[2][1])]]; // 位置情報の配列
   const [i, setI] = useState(0);
 
   const incrementI = () => {
@@ -11,34 +15,22 @@ const Sightseeing = () => {
       setI(i + 1);
     }
   };
-  if (i === (position.length - 1)) {
-    console.log({ i })
-    return (
-      <div>
-        <Street
-          latitude={position[i][0]}
-          longitude={position[i][1]}
-        />
-        <Button
-          to="/"
-          label="終了"
-          hiddenButtonId="HiddenButton"
-          onClick={incrementI}
-        />
-      </div>
-    );
-  } else {
-    console.log({ i })
-    return (
-      <div>
-        <Street
-          latitude={position[i][0]}
-          longitude={position[i][1]}
-        />
-        <button onClick={incrementI}>次の場所へ</button>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <Streetview
+        apiKey="AIzaSyDwcIO3U_TFaSghaoAoZHSwN3zpih3uc6E"
+        streetViewPanoramaOptions={{
+          position: { lat: 135, lng: 35 }, // 任意の場所の緯度経度
+        }} // あなたのGoogle Street View APIキー
+      // 他の必要なプロパティを指定
+      />{2 - i ? <button onClick={incrementI}>次の場所へ</button> : <Button
+        to="/"
+        label="終了"
+        hiddenButtonId="HiddenButton"
+        onClick={incrementI}
+      />}
+    </div>
+  );
 }
 
 export default Sightseeing;

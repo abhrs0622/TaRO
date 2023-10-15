@@ -2,7 +2,7 @@ import React from "react";
 
 const Radio = ({ options, selectedOption, onOptionChange }) => {
   return (
-    <div>
+    <div className="radioButton">
       {options.map((option) => (
         <label key={option.value}>
           <input

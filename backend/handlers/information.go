@@ -3,14 +3,15 @@ package handlers
 import (
 	//"net/http"
 	"context"
+
+	"fmt"
+
 	"github.com/gin-gonic/gin"
 	"github.com/sashabaranov/go-openai"
-	"fmt"
 )
 
 // ロード画面でアバターが話す内容を返す関数
 //　json形式で地名を受け取り，一度chatGPTのAPIに「（地名）に関連した豆知識を教えて」という文章をPOSTし，返ってきた文章をjson形式で返す
-
 
 func Infomation(c *gin.Context) {
 
@@ -21,9 +22,8 @@ func Infomation(c *gin.Context) {
 	// 地名を受け取る
 	// place := c.PostForm("place")
 	place := "東京" // テスト用
-	
+
 	// chatGPTのAPIにPOSTする
-	
 
 	client := openai.NewClient(API_KEY)
 	resp, err := client.CreateChatCompletion(
@@ -48,4 +48,3 @@ func Infomation(c *gin.Context) {
 	// ここで返ってきた文章をjson形式で返す
 	// c.IndentedJSON(http.StatusOK, gin.H{"message": "handlers test"})
 }
-

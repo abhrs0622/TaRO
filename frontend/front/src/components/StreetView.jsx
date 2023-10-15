@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
-const Map = () => {
+const StreetView = ({ latitude, longitude }) => {
   const container = {
     width: "75%",
     height: "500px",
   };
 
   const defaultPosition = {
-    lat: 35.182253007459444,
-    lng: 136.90534328438358,
+    lat: latitude,
+    lng: longitude,
   };
 
   const [markerPosition, setMarkerPosition] = useState(defaultPosition);
@@ -32,7 +32,7 @@ const Map = () => {
     <>
       <h2>React_Google Map_Sample</h2>
       <div className="wrap">
-        <LoadScript id ="2" googleMapsApiKey="AIzaSyDwcIO3U_TFaSghaoAoZHSwN3zpih3uc6E">
+        <LoadScript id="2" googleMapsApiKey="AIzaSyDwcIO3U_TFaSghaoAoZHSwN3zpih3uc6E">
           <GoogleMap
             mapContainerStyle={container}
             center={defaultPosition}
@@ -48,4 +48,4 @@ const Map = () => {
   );
 };
 
-export default Map;
+export default StreetView;

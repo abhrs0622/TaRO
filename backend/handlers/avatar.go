@@ -32,7 +32,7 @@ func Avatar(c *gin.Context) {
 		animationTime = "1.5"
 	}
 	if contents == "検索" {
-		contents = "ルートを探してみるから、ちょっと待っててね。"
+		contents = "ルートを検索するね。ちょっと待ってて。"
 		animation = "05"
 		animationTime = "2.5"
 	}
@@ -42,18 +42,17 @@ func Avatar(c *gin.Context) {
 		animationTime = "1.5"
 	}
 	if contents == "決定" {
-		contents = "いいプランだと思うよ！旅行するのが楽しみだね！"
+		contents = "いいプランだね！楽しみ！"
 		animation = "05"
 		animationTime = "3.5"
 	}
-	//受け取る変数の例)"移動中、[place}"
+	//"移動中、(place)"
 	re := regexp.MustCompile(`移動中、.*`)
 	if re.MatchString(contents) {
 		place := strings.Split(contents, "、")[1]
-		//豆知識生成
 		contents = AvatarInfomation(place)
 		animation = "09"
-		animationTime = "3.0"
+		animationTime = "6.0"
 	}
 	//受け取る変数の例)"到着、{place}"
 	re = regexp.MustCompile(`到着、.*`)
@@ -82,7 +81,7 @@ func Avatar(c *gin.Context) {
 }
 
 // handlers.Informationと同じ処理
-func AvatarInfomation(place string) string {
+func AvatarInfomation(relationCode string, userName string, place string) string {
 
 	// ．envファイルを読み込む
 	err := godotenv.Load(".env")
@@ -105,7 +104,7 @@ func AvatarInfomation(place string) string {
 			Messages: []openai.ChatCompletionMessage{
 				{
 					Role:    openai.ChatMessageRoleUser,
-					Content: "「" + place + "」に関連した豆知識を50字程度・標準語・女の子口調で教えて",
+					Content: "あなたは" + userName + "さんの" + relation + "です。" + place + "に関する豆知識を" + userName + "さんに20字程度で教えてあげてください。口調は" + relation + "という関係を意識してください。",
 				},
 			},
 		},

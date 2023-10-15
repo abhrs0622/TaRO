@@ -3,6 +3,7 @@ package handlers
 import (
 	//"net/http"
 	"context"
+
 	"fmt"
 
 	"github.com/gin-gonic/gin"
@@ -16,6 +17,7 @@ func Infomation(c *gin.Context) {
 
 	//chatGPTのAPIを叩くためのAPIキー
 	API_KEY := "YOUR_API_KEY"
+
 
 	// 地名を受け取る
 	// place := c.PostForm("place")

@@ -5,6 +5,7 @@ import (
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/gin-contrib/cors"
 	"github.com/awslabs/aws-lambda-go-api-proxy/gin"
 	"github.com/gin-gonic/gin"
 
@@ -15,6 +16,9 @@ var ginLambda *ginadapter.GinLambda
 
 func init() {
 	router := gin.Default()
+	config := cors.DefaultConfig()
+    config.AllowOrigins = []string{"http://localhost:3000"}
+    router.Use(cors.New(config))
 	router.GET("/avatar", handlers.Avatar)
 	router.GET("/map", handlers.Map)
 

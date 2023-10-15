@@ -31,7 +31,7 @@ func Avatar(c *gin.Context) {
 		animationTime = "1.5"
 	}
 	if contents == "検索" {
-		contents = "ルートを探してみるから、ちょっと待っててね。"
+		contents = "ルートを検索するね。ちょっと待ってて。"
 		animation = "05"
 		animationTime = "2.5"
 	}
@@ -41,7 +41,7 @@ func Avatar(c *gin.Context) {
 		animationTime = "1.5"
 	}
 	if contents == "決定" {
-		contents = "いいプランだと思うよ！旅行するのが楽しみだね！"
+		contents = "いいプランだね！楽しみ！"
 		animation = "05"
 		animationTime = "3.5"
 	}

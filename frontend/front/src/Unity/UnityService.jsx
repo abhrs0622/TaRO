@@ -12,7 +12,7 @@ export function GetUnityFunctions() {
   //send config from react to unity
 
   const googleApiKey = process.env.REACT_APP_GOOGLE_RECOGNITION_API_KEY;
-  const backendApiServerUrl = process.env.REACT_APP_BACKEND_API_SERVER_URL;
+  const backendApiServerUrl = process.env.REACT_APP_BACKEND_API_SERVER_URL + "/avatar";
   const VoicevoxEndpointUrl = process.env.REACT_APP_VOICEVOX_ENDPOINT_URL;
 
   function configUnityApi() {

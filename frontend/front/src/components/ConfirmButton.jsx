@@ -18,7 +18,7 @@ const ConfirmButton = ({ to, label, hiddenButtonId }) => {
     hiddenButton.click();
     setLoading(true);
     await fetch(
-      "http://localhost:8080/map?value=" +
+      process.env.REACT_APP_BACKEND_API_SERVER_URL + "/map?value=" +
       String(latitude.payload) +
       "," +
       String(longitude.payload),

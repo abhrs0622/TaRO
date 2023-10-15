@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const coordinateSlice = createSlice({
   name: "coordinate",
   initialState: {
-    value: [],
+    value: "init",
   },
   reducers: {
     setCoordinate: (state, actions) => {

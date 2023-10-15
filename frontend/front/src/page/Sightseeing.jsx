@@ -22,7 +22,7 @@ const Sightseeing = () => {
         <Button
           to="/"
           label="終了"
-          hiddenButtonId="hiddenButton"
+          hiddenButtonId="HiddenButton"
           onClick={incrementI}
         />
       </div>

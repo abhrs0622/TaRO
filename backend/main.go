@@ -15,9 +15,12 @@ var ginLambda *ginadapter.GinLambda
 
 func init() {
 	router := gin.Default()
+
+	//CORS回避
 	config := cors.DefaultConfig()
-    config.AllowOrigins = []string{"http://localhost:3000"}
+    config.AllowOrigins = []string{"http://localhost:3000"} //許可するオリジンを記述：今回はフロントからのアクセスを許可したいので，フロントのURLを記述
     router.Use(cors.New(config))
+
 	router.GET("/avatar", handlers.Avatar)
 	router.GET("/map", handlers.Map)
 

@@ -10,6 +10,7 @@ import (
 	"github.com/joho/godotenv" //環境変数(.env)を読み込む
 	"github.com/gin-gonic/gin"
 	"github.com/sashabaranov/go-openai"
+	"strconv" //文字列と数値を変換する
 )
 
 func Avatar(c *gin.Context) {
@@ -52,15 +53,17 @@ func Avatar(c *gin.Context) {
 		relationCode := strings.Split(contents, "、")[1]
 		userName := strings.Split(contents, "、")[2]
 		place := strings.Split(contents, "、")[3]
-		contents = AvatarInfomation(relationCode, userName, place)	
+		contents = AvatarInfomation(relationCode, userName, place, 20)	
 		animation = "09"
 		animationTime = "6.0"
 	}
 	//"到着、(place)"
-	re = regexp.MustCompile(`到着、.*`)
+	re = regexp.MustCompile(`到着、.*、.*、.*`)
 	if re.MatchString(contents) {
-		place := strings.Split(contents, "、")[1]
-		contents = place
+		relationCode := strings.Split(contents, "、")[1]
+		userName := strings.Split(contents, "、")[2]
+		place := strings.Split(contents, "、")[3]
+		contents = AvatarInfomation(relationCode, userName, place, 30)	
 		animation = "03"
 		animationTime = "1.5"
 	}
@@ -82,16 +85,17 @@ func Avatar(c *gin.Context) {
 }
 
 // handlers.Informationと同じ処理
-func AvatarInfomation(relationCode string, userName string, place string) string {
+func AvatarInfomation(relationCode string, userName string, place string, charCount int) string {
 
 	// ．envファイルを読み込む
 	err := godotenv.Load(".env")
 	
-	// もし err がnilではないなら、"読み込み出来ませんでした"が出力されます。
+	// もし err がnilではないなら、"読み込み出来ませんでした"が出力される
 	if err != nil {
 		fmt.Printf("読み込み出来ませんでした: %v", err)
 	} 
-
+	
+	//関係性を文字列に変換
 	var relation string
 	if relationCode == "1" {
 		relation = "恋人"
@@ -105,7 +109,6 @@ func AvatarInfomation(relationCode string, userName string, place string) string
 	API_KEY := os.Getenv("YOUR_API_KEY")
 
 	// chatGPTのAPIにPOSTする
-
 	client := openai.NewClient(API_KEY)
 	resp, err := client.CreateChatCompletion(
 		context.Background(),
@@ -114,7 +117,7 @@ func AvatarInfomation(relationCode string, userName string, place string) string
 			Messages: []openai.ChatCompletionMessage{
 				{
 					Role:    openai.ChatMessageRoleUser,
-					Content: "あなたは"+ userName + "さんの" + relation + "です。" + place + "に関する豆知識を" + userName + "さんに20字程度で教えてあげてください。口調は"+ relation + "という関係を意識してください。",
+					Content: "あなたは"+ userName + "さんの" + relation + "です。「" + place + "」という場所関する豆知識を" + userName + "さんに" + strconv.Itoa(charCount) + "字程度で教えてあげてください。口調は"+ relation + "という関係を意識してください。",
 				},
 			},
 		},

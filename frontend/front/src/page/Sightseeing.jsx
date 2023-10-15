@@ -11,31 +11,31 @@ const Sightseeing = () => {
       setI(i + 1);
     }
   };
-  if (i === (position.length -1)){
-    console.log({i})
-    return(
+  if (i === (position.length - 1)) {
+    console.log({ i })
+    return (
       <div>
-      <Street
-        latitude={position[i][0]}
-        longitude={position[i][1]}
-      />
-        <button onClick={incrementI}>owata</button>
+        <Street
+          latitude={position[i][0]}
+          longitude={position[i][1]}
+        />
         <Button
-          label="何でや？"
+          to="/"
+          label="終了"
           hiddenButtonId="hiddenButton"
           onClick={incrementI}
         />
-    </div>
+      </div>
     );
-  }else{
-    console.log({i})
-    return(
+  } else {
+    console.log({ i })
+    return (
       <div>
-      <Street
-        latitude={position[i][0]}
-        longitude={position[i][1]}
-      />
-    <button onClick={incrementI}>次</button>
+        <Street
+          latitude={position[i][0]}
+          longitude={position[i][1]}
+        />
+        <button onClick={incrementI}>次の場所へ</button>
       </div>
     )
   }

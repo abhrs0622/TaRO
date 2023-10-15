@@ -5,7 +5,7 @@ import { setPlans } from "../features/plans/plansSlice";
 import { useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 
-const ConfirmButton = ({ to, label }) => {
+const ConfirmButton = ({ to, label, hiddenButtonId }) => {
   const latitude = useSelector((state) => state.latitude.value);
   const longitude = useSelector((state) => state.longitude.value);
   const dispatch = useDispatch();
@@ -14,12 +14,14 @@ const ConfirmButton = ({ to, label }) => {
   const [loading, setLoading] = useState(false);
 
   const handleClick = async () => {
+    const hiddenButton = document.getElementById(hiddenButtonId);
+    hiddenButton.click();
     setLoading(true);
     await fetch(
       "http://localhost:8080/map?value=" +
-        String(latitude.payload) +
-        "," +
-        String(longitude.payload),
+      String(latitude.payload) +
+      "," +
+      String(longitude.payload),
       {
         method: "GET",
       }

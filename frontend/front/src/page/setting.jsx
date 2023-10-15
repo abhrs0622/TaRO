@@ -64,15 +64,7 @@ const Setting = () => {
           selectedOption={selectedOption1}
           onOptionChange={handleOptionChange1}
         /></div>
-      <div className="course"><h2>
-        コース内容
-      </h2>
-        <Radio
-          options={options2}
-          selectedOption={selectedOption2}
-          onOptionChange={handleOptionChange2}
-        /></div>
-      <Button to="/Destination" label="next page" hiddenButtonId="startHiddenButton" />
+      <Button to="/Destination" label="ok" hiddenButtonId="startHiddenButton" />
       {handlePostRequest()}
     </div>
   );

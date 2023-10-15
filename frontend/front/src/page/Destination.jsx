@@ -7,7 +7,7 @@ const Destination = () => {
     <div className="Destination">
       <Button to="/setting" label="back page" />
       <Map />
-      <ConfirmButton to="/Select" label="next page" />
+      <ConfirmButton to="/Select" label="next page" hiddenButtonId="rootSearchHiddenButton" />
     </div>
   );
 };

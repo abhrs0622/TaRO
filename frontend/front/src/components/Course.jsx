@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSelectedPlan } from "../features/selectedPlan/selectedPlanSlice";
 import { setCoordinate } from "../features/coordinate/coordinateSlice";
 
-const Course = ({ id, plans, xy }) => {
+const Course = ({ id, plans, xy, hiddenButtonId }) => {
   const selectedPlan = useSelector((state) => state.selectedPlan.value);
   const dispatch = useDispatch();
 
@@ -35,6 +35,8 @@ const Course = ({ id, plans, xy }) => {
     dispatch(setCoordinate(xy));
     console.log(coordinates);
     navigate("/Rec");
+    const hiddenButton = document.getElementById(hiddenButtonId);
+    hiddenButton.click();
   };
 
   return (

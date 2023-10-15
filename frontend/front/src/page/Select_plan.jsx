@@ -22,7 +22,7 @@ const SelectPlan = () => {
             xy.push([plans[i][j]["latitude"], plans[i][j]["longitude"]]);
           }
           Places.push(items);
-          Boxes.push(<Course id={i + 1} plans={items} xy={xy}></Course>);
+          Boxes.push(<Course id={i + 1} plans={items} xy={xy} hiddenButtonId="decideRootHiddenButton"></Course>);
         }
         return Boxes;
       })()}

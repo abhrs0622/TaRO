@@ -1,5 +1,6 @@
 import React from "react";
 import Direction from "../components/Direction";
+import Button from "../components/Button";
 import { GoogleMap, LoadScript, useJsApiLoader } from "@react-google-maps/api";
 import { useSelector } from "react-redux";
 
@@ -24,17 +25,20 @@ const Route_rec = () => {
 
   if (isLoaded) {
     return (
-      <GoogleMap
-        mapContainerStyle={container}
-        center={defaultPosition}
-        zoom={13}
-      >
-        <Direction />
-      </GoogleMap>
+      <div>
+        <GoogleMap
+          mapContainerStyle={container}
+          center={defaultPosition}
+          zoom={13}
+        >
+          <Direction />
+        </GoogleMap>
+        <Button to="/Load" label="go" hiddenButtonId="moveHiddenButton" />
+      </div>
     );
   } else {
     return <></>;
   }
-};
+}
 
 export default Route_rec;

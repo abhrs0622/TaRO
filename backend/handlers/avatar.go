@@ -3,12 +3,13 @@ package handlers
 import (
 	"context"
 	"fmt"
-	"os"
 	"net/http"
+	"os"
 	"regexp"
 	"strings"
-	"github.com/joho/godotenv" //環境変数(.env)を読み込む
+
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv" //環境変数(.env)を読み込む
 	"github.com/sashabaranov/go-openai"
 	"strconv" //文字列と数値を変換する
 )
@@ -20,14 +21,14 @@ func Avatar(c *gin.Context) {
 	animationTime := "1.0" // 小数点第一位まで
 
 	//fmt.Println(contents)
-
+	//場面の条件分岐
 	if contents == "settings..." {
 		contents = "こんにちは.あなたの名前を教えてね！"
 		animation = "01"
 		animationTime = "2.5"
 	}
 	if contents == "スタート" {
-		contents = "旅行する場所を決めよう！"
+		contents = "旅行する場所を決めるよ！"
 		animation = "01"
 		animationTime = "1.5"
 	}
@@ -47,8 +48,7 @@ func Avatar(c *gin.Context) {
 		animationTime = "3.5"
 	}
 	//"移動中、(place)"
-	//引数：[関係性，名前，場所]
-	re := regexp.MustCompile(`移動中、.*、.*、.*`)
+	re := regexp.MustCompile(`移動中、.*`)
 	if re.MatchString(contents) {
 		relationCode := strings.Split(contents, "、")[1]
 		userName := strings.Split(contents, "、")[2]
@@ -67,7 +67,7 @@ func Avatar(c *gin.Context) {
 		animation = "03"
 		animationTime = "1.5"
 	}
-	//"user、(message)"
+	//受け取る変数の例)"user、{message}"
 	re = regexp.MustCompile(`user、.*`)
 	if re.MatchString(contents) {
 		message := strings.Split(contents, "、")[1]
@@ -77,10 +77,11 @@ func Avatar(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"status":        "200",
-		"memory":        contents,
-		"animation":     animation,
-		"animationTime": animationTime,
+		"status":                      "200",
+		"memory":                      contents,
+		"animation":                   animation,
+		"animationTime":               animationTime,
+		"Access-Control-Allow-Origin": "*", //CORS回避
 	})
 }
 
@@ -104,7 +105,7 @@ func AvatarInfomation(relationCode string, userName string, place string, charCo
 	} else if relationCode == "3" {
 		relation = "推し"
 	}
-	
+
 	//chatGPTのAPIを叩くためのAPIキー
 	API_KEY := os.Getenv("YOUR_API_KEY")
 

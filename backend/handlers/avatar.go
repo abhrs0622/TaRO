@@ -47,23 +47,25 @@ func Avatar(c *gin.Context) {
 		animation = "05"
 		animationTime = "3.5"
 	}
-	//"移動中、(place)"
+	//"移動中、(place)"　関係性・名前・場所
 	re := regexp.MustCompile(`移動中、.*`)
 	if re.MatchString(contents) {
 		relationCode := strings.Split(contents, "、")[1]
 		userName := strings.Split(contents, "、")[2]
-		place := strings.Split(contents, "、")[3]
-		contents = AvatarInfomation(relationCode, userName, place, 20)	
+		latitude := strings.Split(contents, "、")[3]
+		altitude := strings.Split(contents, "、")[4]
+		contents = AvatarInfomation(relationCode, userName, latitude, altitude, 20)	
 		animation = "09"
 		animationTime = "6.0"
 	}
 	//"到着、(place)"
-	re = regexp.MustCompile(`到着、.*、.*、.*`)
+	re = regexp.MustCompile(`到着、.*`)
 	if re.MatchString(contents) {
 		relationCode := strings.Split(contents, "、")[1]
 		userName := strings.Split(contents, "、")[2]
-		place := strings.Split(contents, "、")[3]
-		contents = AvatarInfomation(relationCode, userName, place, 30)	
+		latitude := strings.Split(contents, "、")[3]
+		altitude := strings.Split(contents, "、")[4]
+		contents = AvatarInfomation(relationCode, userName, latitude, altitude, 20)	
 		animation = "03"
 		animationTime = "1.5"
 	}
@@ -81,12 +83,12 @@ func Avatar(c *gin.Context) {
 		"memory":                      contents,
 		"animation":                   animation,
 		"animationTime":               animationTime,
-		"Access-Control-Allow-Origin": "*", //CORS回避
+		
 	})
 }
 
 // handlers.Informationと同じ処理
-func AvatarInfomation(relationCode string, userName string, place string, charCount int) string {
+func AvatarInfomation(relationCode string, userName string, latitude string, altitude string, charCount int) string {
 
 	// ．envファイルを読み込む
 	err := godotenv.Load(".env")
@@ -118,7 +120,7 @@ func AvatarInfomation(relationCode string, userName string, place string, charCo
 			Messages: []openai.ChatCompletionMessage{
 				{
 					Role:    openai.ChatMessageRoleUser,
-					Content: "あなたは"+ userName + "さんの" + relation + "です。「" + place + "」という場所関する豆知識を" + userName + "さんに" + strconv.Itoa(charCount) + "字程度で教えてあげてください。口調は"+ relation + "という関係を意識してください。",
+					Content: "あなたは"+ userName + "さんの" + relation + "です。地図上で緯度" + latitude + "・軽度"+ altitude +"の場所関する豆知識を" + userName + "さんに" + strconv.Itoa(charCount) + "字程度で教えてあげてください。口調は"+ relation + "という関係を意識してください。",
 				},
 			},
 		},

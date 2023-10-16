@@ -18,8 +18,23 @@ type Schedule struct {
 	Longitude string `json:"longitude"`
 }
 
+var responseData = gin.H{
+	"message": "",
+	"data": []gin.H{},
+}
+
 func Map(c *gin.Context) {
 	value := c.Query("value")
+	go MakePlans(value)
+	c.IndentedJSON(http.StatusCreated, gin.H{"message": "accepted"})
+}
+
+func GetPlans(c *gin.Context) {
+	c.IndentedJSON(http.StatusCreated, responseData)
+}
+
+func MakePlans(value string) {
+	// value := c.Query("value")
 
 	err := godotenv.Load(".env")
 	
@@ -95,27 +110,6 @@ func Map(c *gin.Context) {
 	response := resp.Choices[0].Message.Content
 	fmt.Println(response)
 
-// 	response := `了解しました。以下は、要求された形式のCSVデータです。
-
-// プラン1:
-// 時間,場所,住所,緯度経度
-// 09:00,東京タワー,東京都港区芝公園４丁目２−８,35.658584,139.745431
-// 11:00,浅草寺,東京都台東区浅草２丁目３−１,35.714285,139.796692
-// 13:00,上野公園,東京都台東区上野公園,35.714603,139.771699
-
-// プラン2:
-// 時間,場所,住所,緯度経度
-// 09:00,東京ディズニーランド,千葉県浦安市舞浜１−１,35.632896,139.880394
-// 12:00,東京スカイツリー,東京都墨田区押上１丁目１−２,35.710063,139.8107
-// 15:00,江戸東京博物館,東京都台東区上野公園４丁目１−１,35.714622,139.776539
-
-// プラン3:
-// 時間,場所,住所,緯度経度
-// 10:00,新宿御苑,東京都新宿区内藤町１１,35.685175,139.710328
-// 12:30,明治神宮,東京都渋谷区代々木神園町１６−２,35.676397,139.699388
-// 15:00,原宿竹下通り,東京都渋谷区神宮前１−１１−６,35.67109,139.705267
-
-// 各プランは「plan + 数字:」の行から始め、時間、場所、住所、緯度経度の順番で区切られています。`
 
 	lines := strings.Split(response, "\n") 
 
@@ -144,10 +138,7 @@ func Map(c *gin.Context) {
 
 	fmt.Println(plans)
 
-	responseData := gin.H{
-		"message": "Success",
-		"data": []gin.H{},
-	}
+	responseData["message"] = "Success"
 
 	for _, plan := range plans {
 		planData := []gin.H{}
@@ -161,5 +152,5 @@ func Map(c *gin.Context) {
 		responseData["data"] = append(responseData["data"].([]gin.H), gin.H{"plan": planData})
 	}
 
-	c.IndentedJSON(http.StatusCreated, responseData)
+	// c.IndentedJSON(http.StatusCreated, responseData)
 }

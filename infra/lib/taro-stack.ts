@@ -8,6 +8,11 @@ import {
 } from "aws-cdk-lib";
 import * as path from "path";
 import { Construct } from "constructs";
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
+if (process.env.OPENAI_KEY == undefined) throw new Error('Invalid environment')
 
 export class TaROStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -22,6 +27,9 @@ export class TaROStack extends Stack {
       timeout: Duration.minutes(5),
       runtime: lambda.Runtime.PROVIDED_AL2,
       handler: "main",
+      environment: {
+        YOUR_API_KEY: String(process.env.OPENAI_KEY),
+      }
     });
 
     new gateway.LambdaRestApi(

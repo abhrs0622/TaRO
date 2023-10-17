@@ -1,6 +1,7 @@
 # TaRO frontend
+## フロントの起動方法（ローカル環境）
 
-## インストール関連
+### ライブラリのインストール
 + googlemap api
   + ```npm install @googlemaps/react-wrapper```
   + 参考（https://developers.google.com/maps/documentation/javascript/react-map?hl=ja）
@@ -12,6 +13,17 @@
    +  ```npm install react-youtube```
 +  reactとUnityの連携
    + ```npm install react-unity-webgl```
+
+### APIキーの取得
+
+
+### .envの作成
+```
+REACT_APP_GOOGLE_STREETVIEW_API_KEY="YOUR GOOGLE STREETVIEW API KEY"
+REACT_APP_GOOGLE_RECOGNITION_API_KEY="YOUR GOOGLE RECOGNITION API KEY"
+REACT_APP_BACKEND_API_SERVER_URL="BACKEND SERVER URL"
+REACT_APP_VOICEVOX_ENDPOINT_URL="VOICEVOX ENDPOINT URL"
+```
 
 ## page 
 + Home.jsx

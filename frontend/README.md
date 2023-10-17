@@ -1,15 +1,17 @@
-#　TaRO frontend
+# TaRO frontend
 
 ## インストール関連
 + googlemap api
-  + npm install @googlemaps/react-wrapper
+  + ```npm install @googlemaps/react-wrapper```
   + 参考（https://developers.google.com/maps/documentation/javascript/react-map?hl=ja）
 + ページ遷移関連
-  + npm install react-router-dom
+  + ```npm install react-router-dom```
 + API 取得のためのコンポーネント
-  + npm install axios
+  + ```npm install axios```
 +  Yotube
-   +  npm install react-youtube
+   +  ```npm install react-youtube```
++  reactとUnityの連携
+   + ```npm install react-unity-webgl```
 
 ## page 
 + Home.jsx

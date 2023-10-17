@@ -18,7 +18,7 @@ const Sightseeing = () => {
   return (
     <div>
       <Streetview
-        apiKey="AIzaSyDwcIO3U_TFaSghaoAoZHSwN3zpih3uc6E"
+        apiKey={ process.env.REACT_APP_GOOGLE_STREETVIEW_API_KEY }
         streetViewPanoramaOptions={{
           position: { lat: 135, lng: 35 }, // 任意の場所の緯度経度
         }} // あなたのGoogle Street View APIキー

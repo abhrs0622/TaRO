@@ -1,5 +1,6 @@
 # TaRO frontend
-アバターとWeb上で旅行ができるWebアプリケーションです
+
+![TaRO_frontend_アプリケーション構成](https://github.com/abhrs0622/TaRO/assets/103473179/b311f060-e918-4dd0-a18c-21fa789b50be)
 
 ## フロントの起動方法（ローカル環境）
 

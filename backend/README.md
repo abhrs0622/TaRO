@@ -1,8 +1,11 @@
 # TaRO backend
 
-## overview
-
 ## Get started
+Create `.env` and add your chatGPT API key.
+```
+YOUR_API_KEY={your chatGPT API key}
+```
+
 
 ### init
 
@@ -32,4 +35,4 @@ if you add API endpoints, you should write codes in handles directory like Avata
 
  `relataionCode`represents your girlfriend when it is `0`, your friend when it is `1`, and your bias when it is `2`.
  
-ChatGPT considers relation and name to generate a message.
+ChatGPT considers relation and your name to generate a message.

@@ -1,13 +1,136 @@
 body {
+  width: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #141414;
+  font-size: 18px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+button {
+  height: 30px;
+  font-weight: bold;
+  font-size: large;
+  width: 45%;
+  background-color: #141414;
+  color: #f3f2f2;
+}
+
+.buttonParent {
+  display: flex;
+  justify-content: center;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.radioButton {
+  accent-color: black;
+}
+
+/*スクロールバー*/
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b6b5b5;
+  border-radius: 5px;
+}
+
+/*画面分割*/
+#root {
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+}
+
+/*観光画面*/
+.App {
+  height: 99vh;
+  width: 52vw;
+  overflow-y: scroll;
+}
+
+
+/*home*/
+.home {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+}
+
+.home h1 {
+  margin-top: 40vh;
+}
+
+.wrap {
+  display: flex;
+  justify-content: center;
+}
+
+/*setting*/
+.setting {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+.setting * {
+  margin: auto 0 auto;
+}
+
+.setting h2 {
+  padding-bottom: 15px;
+  font-size: larger;
+}
+
+.setting .radioButton {
+  background-color: #eeeeee;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.plan {
+  background-color: #b6b5b5;
+  border: none;
+  margin: auto;
+}
+
+.plan :hover {
+  cursor: pointer;
+}
+
+.setting .radioButton {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/*アバター画面*/
+.Avatar {
+  height: 99vh;
+  width: 42vw;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+}
+
+.AvatarCanvas {
+  height: 60vh;
+  border-radius: 20px;
+}
+
+.AvatarText {
+  background-color: #eaeaea;
+  border-radius: 20px;
+  height: 30vh;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  display: table;
+}
+
+.AvatarText * {
+  display: table-cell;
+  vertical-align: middle;
 }

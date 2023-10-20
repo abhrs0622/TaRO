@@ -5,6 +5,7 @@ import (
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/gin-contrib/cors"
 	"github.com/awslabs/aws-lambda-go-api-proxy/gin"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-contrib/cors"
@@ -20,6 +21,7 @@ func init() {
 	config := cors.DefaultConfig()
     config.AllowOrigins = []string{"http://localhost:3000"} //許可するオリジンを記述：今回はフロントからのアクセスを許可したいので，フロントのURLを記述
     router.Use(cors.New(config))
+
 
 	router.GET("/avatar", handlers.Avatar)
 	router.GET("/map", handlers.Map)

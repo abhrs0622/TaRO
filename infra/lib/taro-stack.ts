@@ -66,6 +66,7 @@ export class TaROStack extends Stack {
     SQS.grantSendMessages(producerLambdaFunction);
     SQS.grantConsumeMessages(consumerLambdaFunction);
 
+    // SQSにメッセージが送られると、consumerのlambdaが起動する
     consumerLambdaFunction.addEventSource(new SqsEventSource(SQS));
 
     dynamoTable.grantFullAccess(producerLambdaFunction);

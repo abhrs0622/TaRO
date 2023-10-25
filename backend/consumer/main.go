@@ -1,29 +1,24 @@
 package main
 
 import (
-    "context"
-    "fmt"
-	"strings"
-	"os"
+	"context"
 	"encoding/json"
+	"fmt"
+	"os"
+	"strings"
 
+	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
-    "github.com/aws/aws-lambda-go/events"
-    "github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/sashabaranov/go-openai"
 )
 
 func Handler(ctx context.Context, sqsEvent events.SQSEvent) error {
+	// get (latitude, longitude) from Amazon SQS
 	value := sqsEvent.Records[len(sqsEvent.Records) - 1].Body
-	fmt.Printf("%T\n", value)
-	fmt.Println(value)
 	MakePlans(value)
-
-    for _, message := range sqsEvent.Records {
-        fmt.Printf("The message %s for event source %s = %s \n", message.MessageId, message.EventSource, message.Body)
-    }
 
     return nil
 }
@@ -39,17 +34,10 @@ type Schedule struct {
 }
 
 func MakePlans(value string) {
-	// value := c.Query("value")
-
-	// err := godotenv.Load(".env")
-
-	// if err != nil {
-	// 	fmt.Printf("読み込み出来ませんでした: %v", err)
-	// }
 
 	API_KEY := os.Getenv("YOUR_API_KEY")
-
 	client := openai.NewClient(API_KEY)
+
 	resp, err := client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{
@@ -113,17 +101,14 @@ func MakePlans(value string) {
 	}
 
 	response := resp.Choices[0].Message.Content
-	fmt.Println(response)
-
-
 	lines := strings.Split(response, "\n")
 
 	var plans [][]Schedule
 	var attractions []Schedule
 
+	// ChatGPTは3つの観光地の組(Schedule)を3種類出力する
 	for _, line := range lines {
 		parts := strings.Split(line, ",")
-		// if (len(line) > 0 && line[len(line) - 1] == ':') || parts[0] == "時間" {
 		if parts[0] == "時間" {
 			if len(attractions) > 0 {
 				plans = append(plans, attractions)
@@ -142,37 +127,15 @@ func MakePlans(value string) {
 		plans = append(plans, attractions)
 	}
 
-	fmt.Println(plans)
-
-	// responseData["message"] = "Success"
-
-	// for _, plan := range plans {
-	// 	planData := []gin.H{}
-	// 	for _, schedule := range plan {
-	// 		planData = append(planData, gin.H{
-    //             "place":    schedule.Place,
-    //             "latitude":   schedule.Latitude,
-    //             "longitude": schedule.Longitude,
-    //         })
-	// 	}
-	// 	responseData["data"] = append(responseData["data"].([]gin.H), gin.H{"plan": planData})
-	// }
-
+	// DynamoDBにinputするため, binaryに変換
 	jsonData, err := json.Marshal(plans)
 	if err != nil {
 		fmt.Printf("responseをJSONに変換できませんでした。: %v", err)
 	}
-
-	fmt.Println(plans)
-	fmt.Printf("planDataType: %T\n", plans)
-
 	binaryData := []byte(jsonData)
-
-	fmt.Println(binaryData)
 
 	sess, _ := session.NewSession()
 	db := dynamodb.New(sess)
-
 	tableName := os.Getenv("DYNAMO_TABLE")
 
 	input := &dynamodb.PutItemInput{
@@ -188,30 +151,4 @@ func MakePlans(value string) {
 	}
 
 	db.PutItem(input)
-
-	params := &dynamodb.GetItemInput{
-		TableName: aws.String(tableName),
-		Key: map[string]*dynamodb.AttributeValue{
-			"plansID": {
-				N: aws.String("1"),
-			},
-		},
-	}
-
-	res2, err := db.GetItem(params)
-
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-	fmt.Println("getItem: ", res2)
-
-	item := res2.Item
-	binaryId := item["binary"]
-
-	var output [][]Schedule
-	fmt.Println(&binaryId.B)
-	json.Unmarshal(binaryId.B, &output)
-	fmt.Println("output: ", output)
-
-	// c.IndentedJSON(http.StatusCreated, responseData)
 }

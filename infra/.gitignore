@@ -1,3 +1,6 @@
+# environ variables
+.env
+
 *.js
 !jest.config.js
 *.d.ts

@@ -9,6 +9,9 @@ import (
 	"github.com/awslabs/aws-lambda-go-api-proxy/gin"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+
+	"github.com/abhrs0622/TaRO/handlers"
+	"github.com/gin-contrib/cors"
 )
 
 var ginLambda *ginadapter.GinLambda
@@ -18,7 +21,8 @@ func init() {
 
 	//CORS回避
 	config := cors.DefaultConfig()
-    config.AllowOrigins = []string{"*"}
+
+    config.AllowOrigins = []string{"http://localhost:3000"} //許可するオリジンを記述：今回はフロントからのアクセスを許可したいので，フロントのURLを記述
     router.Use(cors.New(config))
 
 	router.GET("/avatar", handlers.Avatar)

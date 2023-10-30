@@ -5,8 +5,8 @@
 <p align="center">
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=go" />
-    <img width="35px" src="https://raw.githubusercontent.com/gin-gonic/logo/master/color.png" />
-    <img src="https://skillicons.dev/icons?i=javascript,react,redux,cs,unity" />
+    <img width="35px" src="https://raw.githubusercontent.com/gin-gonic/logo/master/color.png" /><br>
+    <img src="https://skillicons.dev/icons?i=javascript,react,redux,cs,unity" /><br>
     <img src="https://skillicons.dev/icons?i=typescript,aws"/>
     <img width="45px" src="https://avatars0.githubusercontent.com/u/43080478?v=4?s=100">
 

@@ -13,6 +13,7 @@
   </a>
 </p>
 
+
 ### Frontend Architecture
 
 ![TaRO_frontend (1)](https://github.com/abhrs0622/TaRO/assets/103473179/49edbbbc-0c74-4397-9283-d0fffb22a1aa)

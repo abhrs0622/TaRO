@@ -33,7 +33,9 @@ const Route_rec = () => {
         >
           <Direction />
         </GoogleMap>
-        <Button to="/Load" label="go" hiddenButtonId="moveHiddenButton" />
+        <div className="next_button_parent">
+          <Button to="/Load" label="go" hiddenButtonId="moveHiddenButton" />
+        </div>
       </div>
     );
   } else {

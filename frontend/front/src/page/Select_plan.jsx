@@ -10,7 +10,9 @@ const SelectPlan = () => {
 
   return (
     <div>
-      <Button to="/Destination" label="back page" />
+      <div className="back_button_parent">
+        <Button to="/Destination" label="←" />
+      </div>
       {(() => {
         const Boxes = [];
         for (let i = 0; i < plans.length; i++) {

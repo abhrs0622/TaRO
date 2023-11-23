@@ -2,10 +2,10 @@ import { useUnityContext } from "react-unity-webgl";
 
 export function GetUnityFunctions() {
   const { unityProvider, sendMessage, addEventListener, removeEventListener } = useUnityContext({
-    loaderUrl: "build/build_v2.6.loader.js",
-    dataUrl: "build/build_v2.6.data",
-    frameworkUrl: "build/build_v2.6.framework.js",
-    codeUrl: "build/build_v2.6.wasm",
+    loaderUrl: "Build/build_v2.6.loader.js",
+    dataUrl: "Build/build_v2.6.data",
+    frameworkUrl: "Build/build_v2.6.framework.js",
+    codeUrl: "Build/build_v2.6.wasm",
   });
 
 

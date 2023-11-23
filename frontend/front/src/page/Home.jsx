@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 // import StartButton from "../components/StartButton";
 // import SetButton from "../components/SetButton";
 import Button from "../components/Button";
+import "./css/Home.css";
 
 function Home() {
 

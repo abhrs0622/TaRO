@@ -1,52 +1,3 @@
-body {
-  width: 100%;
-  margin: 0;
-  text-align: center;
-  font-family: 'Noto Sans JP', sans-serif;
-  color: #141414;
-  font-size: 18px;
-}
-
-button {
-  height: 30px;
-  font-weight: bold;
-  font-size: large;
-  width: 45%;
-  background-color: #141414;
-  color: #f3f2f2;
-}
-
-.buttonParent {
-  display: flex;
-  justify-content: center;
-}
-
-button:hover {
-  cursor: pointer;
-}
-
-.radioButton {
-  accent-color: black;
-}
-
-/*スクロールバー*/
-::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #b6b5b5;
-  border-radius: 5px;
-}
-
-/*画面分割*/
-#root {
-  display: flex;
-  justify-content: space-around;
-  overflow: hidden;
-}
-
 /*観光画面*/
 .App {
   height: 99vh;
@@ -55,21 +6,6 @@ button:hover {
 }
 
 
-/*home*/
-.home {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-around;
-}
-
-.home h1 {
-  margin-top: 40vh;
-}
-
-.wrap {
-  display: flex;
-  justify-content: center;
-}
 
 /*setting*/
 .setting {
@@ -108,29 +44,63 @@ button:hover {
   justify-content: space-evenly;
 }
 
-/*アバター画面*/
-.Avatar {
-  height: 99vh;
-  width: 42vw;
-  display: flex;
-  flex-flow: column;
-  justify-content: space-evenly;
+
+
+
+/*new css*/
+body {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 20px;
+  background-color: #fec7d7;
 }
 
-.AvatarCanvas {
-  height: 60vh;
-  border-radius: 20px;
-}
-
-.AvatarText {
-  background-color: #eaeaea;
-  border-radius: 20px;
-  height: 30vh;
+* {
+  color: #0e172c;
   font-family: 'M PLUS Rounded 1c', sans-serif;
-  display: table;
 }
 
-.AvatarText * {
-  display: table-cell;
-  vertical-align: middle;
+/*ボタン*/
+
+button {
+  height: 35px;
+  font-weight: 500;
+  font-size: 1em;
+  width: 45%;
+  background-color: #0e172c;
+  border: none;
+  border-radius: 3px;
+  color: #fffffe;
+}
+
+.buttonParent {
+  display: flex;
+  justify-content: center;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.radioButton {
+  accent-color: black;
+}
+
+/*スクロールバー*/
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b6b5b5;
+  border-radius: 5px;
+}
+
+/*画面分割*/
+#root {
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
 }

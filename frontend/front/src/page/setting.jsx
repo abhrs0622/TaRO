@@ -88,11 +88,13 @@ const Setting = () => {
           />
         </div>
       </div >
-      <Button
-        to="/Destination"
-        label="next page"
-        hiddenButtonId="startHiddenButton"
-      />
+      <div className="next_button_parent">
+        <Button
+          to="/Destination"
+          label="next page"
+          hiddenButtonId="startHiddenButton"
+        />
+      </div>
     </>
   );
 };

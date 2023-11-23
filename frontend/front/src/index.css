@@ -5,30 +5,7 @@
   overflow-y: scroll;
 }
 
-
-
-/*setting*/
-.setting {
-  height: 100%;
-  display: flex;
-  flex-flow: column;
-}
-
-.setting * {
-  margin: auto 0 auto;
-}
-
-.setting h2 {
-  padding-bottom: 15px;
-  font-size: larger;
-}
-
-.setting .radioButton {
-  background-color: #eeeeee;
-  padding: 15px;
-  border-radius: 20px;
-}
-
+/*select plan*/
 .plan {
   background-color: #b6b5b5;
   border: none;
@@ -38,14 +15,6 @@
 .plan :hover {
   cursor: pointer;
 }
-
-.setting .radioButton {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-
-
 
 /*new css*/
 body {
@@ -59,6 +28,7 @@ body {
 * {
   color: #0e172c;
   font-family: 'M PLUS Rounded 1c', sans-serif;
+  border-radius: 3px;
 }
 
 /*ボタン*/

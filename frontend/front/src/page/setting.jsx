@@ -5,6 +5,7 @@ import ApiPost from "../components/ApiPost";
 import { useSelector, useDispatch } from "react-redux";
 import { setName } from "../features/name/nameSlice";
 import { setRelationship } from "../features/relationship/relationshipSlice";
+import "./css/setting.css";
 
 // radio button
 const options1 = [
@@ -55,38 +56,44 @@ const Setting = () => {
   };
 
   return (
-    <div className="setting">
-      <Button to="/" label="back page" />
-      <div className="username">
-        <h2>名前</h2>
-        <input
-          type="text"
-          value={inputText} // 入力ボックスの値をstateから取得
-          onChange={handleInputChange} // テキストが変更されたときのハンドラー
-        />
+    <>
+      <div className="back_button_parent">
+        <Button to="/" label="←" />
       </div>
-      <div className="relationship">
-        <h2>アバターとの関係性</h2>
-        <Radio
-          options={options1}
-          selectedOption={selectedOption1}
-          onOptionChange={handleOptionChange1}
-        />
-      </div>
-      <div className="course">
-        <h2>コース内容</h2>
-        <Radio
-          options={options2}
-          selectedOption={selectedOption2}
-          onOptionChange={handleOptionChange2}
-        />
-      </div>
+      <div className="setting">
+        <div className="username">
+          <h2>名前</h2>
+          <div className="input_parent">
+            <input
+              type="text"
+              value={inputText} // 入力ボックスの値をstateから取得
+              onChange={handleInputChange} // テキストが変更されたときのハンドラー
+            />
+          </div>
+        </div>
+        <div className="relationship">
+          <h2>アバターとの関係性</h2>
+          <Radio
+            options={options1}
+            selectedOption={selectedOption1}
+            onOptionChange={handleOptionChange1}
+          />
+        </div>
+        <div className="course">
+          <h2>コース内容</h2>
+          <Radio
+            options={options2}
+            selectedOption={selectedOption2}
+            onOptionChange={handleOptionChange2}
+          />
+        </div>
+      </div >
       <Button
         to="/Destination"
         label="next page"
         hiddenButtonId="startHiddenButton"
       />
-    </div>
+    </>
   );
 };
 

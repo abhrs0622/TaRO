@@ -15,6 +15,7 @@ export function GetUnityFunctions() {
   const VoicevoxEndpointUrl = process.env.REACT_APP_VOICEVOX_ENDPOINT_URL;
 
   console.log(googleApiKey);
+  console.log(VoicevoxEndpointUrl);
 
   function configUnityApi() {
     sendMessage("ChatdollKitVRM", "googleApiKey", googleApiKey);

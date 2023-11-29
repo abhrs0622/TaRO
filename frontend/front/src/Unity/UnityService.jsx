@@ -17,6 +17,7 @@ export function GetUnityFunctions() {
   console.log(googleApiKey);
   console.log(VoicevoxEndpointUrl);
 
+  
   function configUnityApi() {
     sendMessage("ChatdollKitVRM", "googleApiKey", googleApiKey);
     sendMessage("ChatdollKitVRM", "WakewordGoogleApiKey", googleApiKey);

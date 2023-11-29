@@ -15,6 +15,9 @@ export function GetUnityFunctions() {
   const backendApiServerUrl = process.env.REACT_APP_BACKEND_API_SERVER_URL + "/avatar";
   const VoicevoxEndpointUrl = process.env.REACT_APP_VOICEVOX_ENDPOINT_URL;
 
+  console.log(googleApiKey);
+
+  
   function configUnityApi() {
     sendMessage("ChatdollKitVRM", "googleApiKey", googleApiKey);
     sendMessage("ChatdollKitVRM", "WakewordGoogleApiKey", googleApiKey);

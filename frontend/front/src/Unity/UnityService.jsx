@@ -8,7 +8,6 @@ export function GetUnityFunctions() {
     codeUrl: "Build/build_v2.6.wasm",
   });
 
-
   //send config from react to unity
 
   const googleApiKey = process.env.REACT_APP_GOOGLE_RECOGNITION_API_KEY;

@@ -1,3 +1,29 @@
+.Avatar {
+    height: 99vh;
+    width: 42vw;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+}
+
+.AvatarCanvas {
+    height: 60vh;
+    border-radius: 20px;
+    border: solid #fffffe 10px;
+}
+
+.AvatarText {
+    background-color: #fffffe;
+    border-radius: 20px;
+    height: 30vh;
+    display: table;
+}
+
+.AvatarText * {
+    display: table-cell;
+    vertical-align: middle;
+}
+
 .Avatar button {
     visibility: hidden;
     position: fixed;

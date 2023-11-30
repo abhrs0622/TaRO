@@ -18,17 +18,20 @@ const Sightseeing = () => {
   return (
     <div>
       <Streetview
-        apiKey={ process.env.REACT_APP_GOOGLE_STREETVIEW_API_KEY }
+        apiKey={process.env.REACT_APP_GOOGLE_STREETVIEW_API_KEY}
         streetViewPanoramaOptions={{
           position: { lat: 135, lng: 35 }, // 任意の場所の緯度経度
         }} // あなたのGoogle Street View APIキー
       // 他の必要なプロパティを指定
-      />{2 - i ? <button onClick={incrementI}>次の場所へ</button> : <Button
-        to="/"
-        label="終了"
-        hiddenButtonId="HiddenButton"
-        onClick={incrementI}
-      />}
+      />
+      <div className="next_button_parent">
+        {2 - i ? <button onClick={incrementI}>次の場所へ</button> : <Button
+          to="/"
+          label="終了"
+          hiddenButtonId="HiddenButton"
+          onClick={incrementI}
+        />}
+      </div>
     </div>
   );
 }

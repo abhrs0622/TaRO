@@ -5,12 +5,7 @@
   overflow-y: scroll;
 }
 
-/*select plan*/
-.plan {
-  background-color: #b6b5b5;
-  border: none;
-  margin: auto;
-}
+
 
 .plan :hover {
   cursor: pointer;

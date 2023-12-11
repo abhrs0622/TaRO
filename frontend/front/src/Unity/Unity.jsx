@@ -120,6 +120,10 @@ export function Avatar() {
         <button id="arrive3HiddenButton" onClick={() => AvatarActions.arrive(sendMessage, sendArrivePlace3)}>Setting</button>
 
         <button id="HiddenButton">hidden</button>
+        <div className="sendText">
+          <textarea></textarea>
+          <button className="sendTextButton">Send</button>
+        </div>
         <div className="AvatarText"><p>{`${text}`}</p></div>
         <Unity unityProvider={unityProvider} className="AvatarCanvas" />
 

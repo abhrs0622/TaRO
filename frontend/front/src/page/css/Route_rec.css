@@ -1,0 +1,9 @@
+.route_map {
+    height: 90%;
+    display: flex;
+
+}
+
+.route_map div {
+    margin: auto;
+}

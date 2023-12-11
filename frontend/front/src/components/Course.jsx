@@ -8,19 +8,7 @@ const Course = ({ id, plans, xy, hiddenButtonId }) => {
   const selectedPlan = useSelector((state) => state.selectedPlan.value);
   const dispatch = useDispatch();
 
-  const boxStyle = {
-    width: "200px",
-    height: "100px",
-    backgroundColor: "lightblue",
-    border: "2px solid blue",
-    borderRadius: "8px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    "& a:hover": {
-      textDecoration: "underline",
-    },
-  };
+
 
   const navigate = useNavigate();
 
@@ -40,7 +28,7 @@ const Course = ({ id, plans, xy, hiddenButtonId }) => {
   };
 
   return (
-    <button className="plan" style={boxStyle} onClick={handleClick}>
+    <button className="plan" onClick={handleClick}>
       <span>{id}</span>
       {(() => {
         const items = [];

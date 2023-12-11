@@ -1,0 +1,52 @@
+/*setting*/
+.setting {
+    height: 88%;
+    display: flex;
+    flex-flow: column;
+    margin: 15px 0 15px 0;
+}
+
+.setting * {
+    margin: auto 0 auto;
+}
+
+.back_button_parent .buttonParent button {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    left: 0vw;
+    width: 40px;
+    height: 40px;
+}
+
+.setting div {
+    padding: 10px;
+}
+
+.setting h2 {
+    padding-bottom: 15px;
+    font-size: larger;
+    padding-top: 10px;
+    padding-left: 10px;
+    text-align: left;
+}
+
+.setting .input_parent {
+    text-align: left;
+    padding: 0 0 0 10px;
+}
+
+.setting .input_parent input {
+    height: 30px;
+    width: 50%;
+    background-color: #fffffe;
+    border: solid #0e172c 0.1px;
+}
+
+.setting .radioButton {
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #fffffe;
+    display: flex;
+    justify-content: space-evenly;
+}

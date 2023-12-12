@@ -25,6 +25,7 @@ func init() {
     config.AllowOrigins = []string{"http://localhost:3000"} //許可するオリジンを記述：今回はフロントからのアクセスを許可したいので，フロントのURLを記述
     router.Use(cors.New(config))
 
+	router.POST("/communication", handlers.Communication)
 	router.GET("/avatar", handlers.Avatar)
 	router.GET("/map", handlers.Map)
 	router.GET("/get-plans", handlers.GetPlans)

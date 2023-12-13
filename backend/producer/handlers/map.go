@@ -9,7 +9,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
-	"github.com/aws/aws-sdk-go/service/sqs"
+	// "github.com/aws/aws-sdk-go/service/sqs"　// エラー消しのために一時的にコメントアウト
 	"github.com/gin-gonic/gin"
 )
 
@@ -26,7 +26,7 @@ var responseData = gin.H{
 
 // 緯度・軽度を受け取り, そのままSQSに送る
 func Map(c *gin.Context) {
-	value := c.Query("value")
+	// value := c.Query("value") // エラー消しのために一時的にコメントアウト
 
 	// DynamoDBのplansを空にする
 	var plans [][]Schedule
@@ -55,15 +55,17 @@ func Map(c *gin.Context) {
 
 	db.PutItem(input)
 
+//// エラー消しのために一時的にコメントアウト
 	// send value to AWS SQS
-	svc := sqs.New(sess)
-	qURL := os.Getenv("SQS_URL")
+	// svc := sqs.New(sess)
+	// qURL := os.Getenv("SQS_URL")
 
-	result, err := svc.SendMessage(&sqs.SendMessageInput{
-        DelaySeconds: aws.Int64(10),
-        MessageBody: aws.String(value),
-        QueueUrl:    &qURL,
-    })
+	// result, err := svc.SendMessage(&sqs.SendMessageInput{
+    //     DelaySeconds: aws.Int64(10),
+    //     MessageBody: aws.String(value),
+    //     QueueUrl:    &qURL,
+    // })
+//// エラー消しのために一時的にコメントアウト(ここまで)
 
     if err != nil {
         fmt.Println("Error while sending message to SQS", err)

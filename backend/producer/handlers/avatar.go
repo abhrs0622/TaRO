@@ -73,7 +73,8 @@ func Avatar(c *gin.Context) {
 	re = regexp.MustCompile(`user、.*`)
 	if re.MatchString(contents) {
 		message := strings.Split(contents, "、")[1]
-		contents = message
+		//avatarInformation()をそのまま使うために，latitudeにはmessageを，altitudeには999を入れて渡す
+		contents = AvatarInfomation("0", " ", "999", message, 20)
 		animation = "10"
 		animationTime = "2.0"
 	}
@@ -91,7 +92,7 @@ func Avatar(c *gin.Context) {
 func AvatarInfomation(relationCode string, userName string, latitude string, altitude string, charCount int) string {
 
 	// ．envファイルを読み込む
-	err := godotenv.Load(".env")
+	err := godotenv.Load("../.env")
 	
 	// もし err がnilではないなら、"読み込み出来ませんでした"が出力される
 	if err != nil {
@@ -106,13 +107,25 @@ func AvatarInfomation(relationCode string, userName string, latitude string, alt
 		relation = "友人"
 	} else if relationCode == "3" {
 		relation = "推し"
+	}else{
+		relation = ""
 	}
 
 	//chatGPTのAPIを叩くためのAPIキー
 	API_KEY := os.Getenv("YOUR_API_KEY")
-
+	
 	// chatGPTのAPIにPOSTする
 	client := openai.NewClient(API_KEY)
+
+	postContent := ""
+
+	if latitude == "999" { //アバターと会話する時
+		postContent = "ある人から「" + altitude + "」という質問が来たと想定し、" + strconv.Itoa(charCount) + "字程度で答えてあげてください。女の子口調を意識してください。"
+	}else{
+		postContent = "あなたは"+ userName + "さんの" + relation + "です。地図上で緯度" + latitude + "・軽度"+ altitude +"の場所関する豆知識を" + userName + "さんに" + strconv.Itoa(charCount) + "字程度で教えてあげてください。口調は"+ relation + "という関係を意識してください。"
+	}
+
+	//メッセージを返す
 	resp, err := client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{
@@ -120,7 +133,7 @@ func AvatarInfomation(relationCode string, userName string, latitude string, alt
 			Messages: []openai.ChatCompletionMessage{
 				{
 					Role:    openai.ChatMessageRoleUser,
-					Content: "あなたは"+ userName + "さんの" + relation + "です。地図上で緯度" + latitude + "・軽度"+ altitude +"の場所関する豆知識を" + userName + "さんに" + strconv.Itoa(charCount) + "字程度で教えてあげてください。口調は"+ relation + "という関係を意識してください。",
+					Content: postContent,
 				},
 			},
 		},
@@ -130,6 +143,5 @@ func AvatarInfomation(relationCode string, userName string, latitude string, alt
 		fmt.Printf("ChatCompletion error: %v\n", err)
 		return "error"
 	}
-
 	return resp.Choices[0].Message.Content
 }

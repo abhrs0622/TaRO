@@ -66,7 +66,7 @@ export function Avatar() {
       alert("メッセージを入力してください。");
     } else {
       //api post
-      const userMessage = "user、" + sendText;
+      const userMessage = sendText;
       AvatarActions.sendMessageToAvatar(sendMessage, userMessage);
       setSendText("");
     }

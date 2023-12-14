@@ -1,13 +1,14 @@
 import { useEffect, useState, useCallback } from "react";
 import { GetUnityFunctions } from "./UnityService";
 import { AvatarText } from "./GetAvatarText";
+import { start } from "./AvatarActions";
 
 export function ManageDisplyButton() {
     const { unityProvider, sendMessage, addEventListener, removeEventListener } = GetUnityFunctions();
     const [startTime, setStartTime] = useState("");
 
     const handleStartTime = useCallback((startTime) => {
-        setStartTime(startTime);
+        setStartTime(String(startTime));
     }, []);
 
     useEffect(() => {
@@ -19,7 +20,6 @@ export function ManageDisplyButton() {
 
     const text = AvatarText();
     const textLength = text.length;
-    const waitTimeFromStartVoice = 0.2 * Number(textLength) * 1000;
-
-    console.log(startTime)
+    const interval = 0.2 * Number(textLength) * 1000;
+    return ({ startTime: startTime, interval: interval })
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Radio from "../components/Radio";
 import Button from "../components/Button";
 import ApiPost from "../components/ApiPost";
@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setName } from "../features/name/nameSlice";
 import { setRelationship } from "../features/relationship/relationshipSlice";
 import "./css/setting.css";
+import { ManageDisplyButton } from "../Unity/ManageDisplayButton";
+import { start } from "../Unity/AvatarActions";
 
 // radio button
 const options1 = [
@@ -55,6 +57,29 @@ const Setting = () => {
     return <ApiPost url={url} requestData={requestData} />;
   };
 
+  const [disable, setDisable] = useState(true);
+  const [disableStyle, setDisableStyle] = useState({ opacity: 0.6 })
+  useEffect(() => {
+    console.log("page settings")
+  }, [])
+  const startTime = ManageDisplyButton().startTime;
+  const interval = Number(ManageDisplyButton().interval);
+  useEffect(() => {
+    if (startTime !== "") {
+      console.log("statTime change")
+      setTimeout(() => {
+        setDisable(false)
+        setDisableStyle({ opacity: 1 })
+        console.log("disable false")
+      }, interval)
+    }
+  }, [startTime])
+  // console.log(ManageDisplyButton().startTime)
+  // setTimeout(() => {
+  //   setDisable(false)
+  //   console.log("disable false")
+  // }, 10);
+
   return (
     <>
       <div className="back_button_parent">
@@ -93,6 +118,8 @@ const Setting = () => {
           to="/Destination"
           label="next page"
           hiddenButtonId="startHiddenButton"
+          disable={disable}
+          style={disableStyle}
         />
       </div>
     </>

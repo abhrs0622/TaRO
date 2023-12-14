@@ -19,7 +19,6 @@ let userMessage = "メッセージ";
 
 
 export function Avatar() {
-  ManageDisplyButton();
   const coordinate = useSelector((state) => state.coordinate.value);
   const name = useSelector((state) => state.name.value);
   const rel = useSelector((state) => state.relationship.value);
@@ -50,13 +49,16 @@ export function Avatar() {
     sendArrivePlace2 = relationship + "、" + username + "、" + arrivePlace2;
     sendArrivePlace3 = relationship + "、" + username + "、" + arrivePlace3;
   }
+
+  const { unityProvider, sendMessage, addEventListener, removeEventListener } = GetUnityFunctions();
+
+  console.log(ManageDisplyButton());
+  const text = AvatarText();
+
   // avatar data
 
   // const [text, setText] = useState("");
   // const [startTime, setStartTime] = useState("");
-
-  const { unityProvider, sendMessage, addEventListener, removeEventListener } = GetUnityFunctions();
-
 
   //take data from unity to react
 
@@ -80,8 +82,6 @@ export function Avatar() {
   //     removeEventListener("startSpeakTime", handleStartTime);
   //   };
   // }, [addEventListener, removeEventListener, handleStartTime]);
-
-  const text = AvatarText();
 
   // useEffect(() => {
   //   setText("from component" + AvatarText());

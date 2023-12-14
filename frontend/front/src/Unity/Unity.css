@@ -15,7 +15,7 @@
 .AvatarText {
     background-color: #fffffe;
     border-radius: 20px;
-    height: 30vh;
+    height: 15vh;
     display: table;
 }
 
@@ -24,8 +24,30 @@
     vertical-align: middle;
 }
 
+
 .Avatar button {
     visibility: hidden;
     position: fixed;
     bottom: 100vh;
+}
+
+.Avatar .sendText {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.Avatar textarea {
+    height: 10vh;
+    width: 72%;
+    border-radius: 20px;
+    padding: 18px;
+}
+
+.Avatar .sendTextButton {
+    visibility: visible;
+    position: static;
+    background-color: #a786df;
+    color: #fffffe;
+    width: 18%;
 }

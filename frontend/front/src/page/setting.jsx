@@ -8,6 +8,7 @@ import { setRelationship } from "../features/relationship/relationshipSlice";
 import "./css/setting.css";
 import { ManageDisplyButton } from "../Unity/ManageDisplayButton";
 import { start } from "../Unity/AvatarActions";
+import { SwitchDisable } from "../components/SwitchDisable";
 
 // radio button
 const options1 = [
@@ -57,28 +58,26 @@ const Setting = () => {
     return <ApiPost url={url} requestData={requestData} />;
   };
 
-  const [disable, setDisable] = useState(true);
-  const [disableStyle, setDisableStyle] = useState({ opacity: 0.6 })
-  useEffect(() => {
-    console.log("page settings")
-  }, [])
-  const startTime = ManageDisplyButton().startTime;
-  const interval = Number(ManageDisplyButton().interval);
-  useEffect(() => {
-    if (startTime !== "") {
-      console.log("statTime change")
-      setTimeout(() => {
-        setDisable(false)
-        setDisableStyle({ opacity: 1 })
-        console.log("disable false")
-      }, interval)
-    }
-  }, [startTime])
-  // console.log(ManageDisplyButton().startTime)
-  // setTimeout(() => {
-  //   setDisable(false)
-  //   console.log("disable false")
-  // }, 10);
+  // const [disable, setDisable] = useState(true);
+  // const [disableStyle, setDisableStyle] = useState({ opacity: 0.6 })
+  // useEffect(() => {
+  //   console.log("page settings")
+  // }, [])
+  // const startTime = ManageDisplyButton().startTime;
+  // const interval = Number(ManageDisplyButton().interval);
+  // useEffect(() => {
+  //   if (startTime !== "") {
+  //     console.log("statTime change")
+  //     setTimeout(() => {
+  //       setDisable(false)
+  //       setDisableStyle({ opacity: 1 })
+  //       console.log("disable false")
+  //     }, interval)
+  //   }
+  // }, [startTime])
+  const disable = SwitchDisable().disable;
+  const disableStyle = SwitchDisable().disableStyle;
+  console.log("switch Disable:" + disable + disableStyle)
 
   return (
     <>

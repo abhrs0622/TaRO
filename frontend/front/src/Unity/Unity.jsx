@@ -46,10 +46,31 @@ export function Avatar() {
     sendArrivePlace2 = relationship + "、" + username + "、" + arrivePlace2;
     sendArrivePlace3 = relationship + "、" + username + "、" + arrivePlace3;
   }
+
   // avatar data
 
   const [text, setText] = useState("");
   const [startTime, setStartTime] = useState("");
+
+  //communicate with avatar
+
+  const [sendText, setSendText] = useState("");
+
+  const handleChangeSendText = (e) => {
+    setSendText(e.target.value);
+  };
+
+  const sendTextToAvatar = (sendText) => {
+    console.log(sendText);
+    if (sendText == "") {
+      alert("メッセージを入力してください。");
+    } else {
+      //api post
+      const userMessage = sendText;
+      AvatarActions.sendMessageToAvatar(sendMessage, userMessage);
+      setSendText("");
+    }
+  };
 
   const { unityProvider, sendMessage, addEventListener, removeEventListener } = GetUnityFunctions();
 
@@ -120,6 +141,10 @@ export function Avatar() {
         <button id="arrive3HiddenButton" onClick={() => AvatarActions.arrive(sendMessage, sendArrivePlace3)}>Setting</button>
 
         <button id="HiddenButton">hidden</button>
+        <div className="sendText">
+          <textarea placeholder="アバターへのメッセージを入力してください。" value={sendText} onChange={handleChangeSendText} />
+          <button className="sendTextButton" onClick={() => sendTextToAvatar(sendText)}>send</button>
+        </div>
         <div className="AvatarText"><p>{`${text}`}</p></div>
         <Unity unityProvider={unityProvider} className="AvatarCanvas" />
 

@@ -4,6 +4,7 @@ import Button from "../components/Button";
 import { GoogleMap, LoadScript, useJsApiLoader } from "@react-google-maps/api";
 import { useSelector } from "react-redux";
 import "./css/Route_rec.css";
+import { SwitchDisable } from "../components/SwitchDisable";
 
 const Route_rec = () => {
   const latitude = useSelector((state) => state.latitude.value);
@@ -23,7 +24,8 @@ const Route_rec = () => {
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyDwcIO3U_TFaSghaoAoZHSwN3zpih3uc6E",
   });
-
+  const disable = SwitchDisable().disable;
+  const disableStyle = SwitchDisable().disableStyle;
   if (isLoaded) {
     return (
       <div className="route_map">
@@ -35,7 +37,7 @@ const Route_rec = () => {
           <Direction />
         </GoogleMap>
         <div className="next_button_parent">
-          <Button to="/Load" label="go" hiddenButtonId="moveHiddenButton" />
+          <Button to="/Load" label="go" hiddenButtonId="moveHiddenButton" disable={disable} style={disableStyle} />
         </div>
       </div>
     );

@@ -9,9 +9,6 @@ const Destination = () => {
   const disableStyle = SwitchDisable().disableStyle;
   return (
     <div className="Destination">
-      <div className="back_button_parent">
-        <Button to="/setting" label="←" />
-      </div>
       <div className="map">
         <Map />
       </div>

@@ -58,32 +58,12 @@ const Setting = () => {
     return <ApiPost url={url} requestData={requestData} />;
   };
 
-  // const [disable, setDisable] = useState(true);
-  // const [disableStyle, setDisableStyle] = useState({ opacity: 0.6 })
-  // useEffect(() => {
-  //   console.log("page settings")
-  // }, [])
-  // const startTime = ManageDisplyButton().startTime;
-  // const interval = Number(ManageDisplyButton().interval);
-  // useEffect(() => {
-  //   if (startTime !== "") {
-  //     console.log("statTime change")
-  //     setTimeout(() => {
-  //       setDisable(false)
-  //       setDisableStyle({ opacity: 1 })
-  //       console.log("disable false")
-  //     }, interval)
-  //   }
-  // }, [startTime])
   const disable = SwitchDisable().disable;
   const disableStyle = SwitchDisable().disableStyle;
   console.log("switch Disable:" + disable + disableStyle)
 
   return (
     <>
-      <div className="back_button_parent">
-        <Button to="/" label="←" />
-      </div>
       <div className="setting">
         <div className="username">
           <h2>名前</h2>

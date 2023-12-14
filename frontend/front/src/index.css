@@ -65,7 +65,7 @@ button:hover {
 .next_button_parent {
   width: 52vw;
   position: absolute;
-  bottom: 0;
+  bottom: 2px;
 }
 
 .next_button_parent button {

@@ -7,16 +7,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { setLatitude } from "../features/latitude/latitudeSlice";
 import { setLongitude } from "../features/longitude/longitudeSlice";
 import { AvatarText } from "./GetAvatarText";
-import { ManageDisplyButton } from "./ManageDisplayButton";
-
-
-let actionStatus = { "setting": false, "start": false, "rootSearch": false, "finishPootSearch": false, "decideRoot": false, "move": false, "arrive": false };
-
-
-
-let userMessage = "メッセージ";
-//AvatarActions.changeAllStatus(false);
-
 
 export function Avatar() {
   const coordinate = useSelector((state) => state.coordinate.value);
@@ -52,67 +42,7 @@ export function Avatar() {
 
   const { unityProvider, sendMessage, addEventListener, removeEventListener } = GetUnityFunctions();
 
-  console.log(ManageDisplyButton());
   const text = AvatarText();
-
-  // avatar data
-
-  // const [text, setText] = useState("");
-  // const [startTime, setStartTime] = useState("");
-
-  //take data from unity to react
-
-  // const handleText = useCallback((text) => {
-  //   setText(text);
-  // }, []);
-  // const handleStartTime = useCallback((startTime) => {
-  //   setStartTime(startTime);
-  // }, []);
-
-  // useEffect(() => {
-  //   addEventListener("avatarText", handleText);
-  //   return () => {
-  //     removeEventListener("avatarText", handleText);
-  //   };
-  // }, [addEventListener, removeEventListener, handleText]);
-
-  // useEffect(() => {
-  //   addEventListener("startSpeakTime", handleStartTime);
-  //   return () => {
-  //     removeEventListener("startSpeakTime", handleStartTime);
-  //   };
-  // }, [addEventListener, removeEventListener, handleStartTime]);
-
-  // useEffect(() => {
-  //   setText("from component" + AvatarText());
-  // }, [AvatarText]);
-
-  // const changeAllStatus = (isAllStatus) => {
-  //   actionStatus.setting = isAllStatus;
-  //   actionStatus.start = isAllStatus;
-  //   actionStatus.rootSearch = isAllStatus;
-  //   actionStatus.finishPootSearch = isAllStatus;
-  //   actionStatus.decideRoot = isAllStatus;
-  //   actionStatus.move = isAllStatus;
-  //   actionStatus.arrive = isAllStatus;
-  // };
-
-
-  // const textLength = text.length;
-  // const waitTimeFromStartVoice = 0.2 * Number(textLength) * 1000;
-
-  // const [buttonVisibility, setButtonVisibility] = useState('hidden');
-
-  // const displayNextButton = () => {
-  //   setTimeout(function () {
-  //     console.log("ボタン表示関数");
-  //     if (actionStatus.setting == true) {
-  //       console.log("ボタン表示処理")
-  //       setButtonVisibility('visible');
-  //     }
-  //   }, waitTimeFromStartVoice);
-  // };
-  // useEffect(displayNextButton, [startTime]);
   return (
     <Fragment>
       <div className="Avatar">

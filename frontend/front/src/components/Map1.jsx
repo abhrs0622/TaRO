@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ReactStreetview from "react-google-streetview";
+import PropTypes from "prop-types";
 
-const Map1 = () => {
+const Map1 = ({ position }) => {
   const googleMapsApiKey = process.env.REACT_APP_MAP_API_KEY;
   const [positions, setpositions] = useState({
-    lat: 24.9178,
-    lng: 67.0972,
+    lat: position[0],
+    lng: position[1],
   });
   useEffect(() => {
     console.log("POSITIONS", positions);
@@ -18,13 +19,15 @@ const Map1 = () => {
     showRoadLabels: true,
     zoomControl: true,
   };
-
+  console.log(position);
+  console.log(position[0]);
+  console.log(position[1]);
   return (
     <div
       style={{
         width: "800px",
         height: "450px",
-        backgroundColor: "#eeeeee",
+        backgroundColor: "000000",
       }}
     >
       <ReactStreetview
@@ -33,6 +36,10 @@ const Map1 = () => {
       />
     </div>
   );
+};
+
+Map1.propTypes = {
+  position: PropTypes.array.isRequired,
 };
 
 export default Map1;

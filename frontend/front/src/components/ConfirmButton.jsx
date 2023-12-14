@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setPlans } from "../features/plans/plansSlice";
 
-const ConfirmButton = ({ to, label, hiddenButtonId }) => {
+const ConfirmButton = ({ to, label, hiddenButtonId, disable, disableStyle }) => {
   const latitude = useSelector((state) => state.latitude.value);
   const longitude = useSelector((state) => state.longitude.value);
   const dispatch = useDispatch();
@@ -18,10 +18,10 @@ const ConfirmButton = ({ to, label, hiddenButtonId }) => {
     setLoading(true);
     await fetch(
       process.env.REACT_APP_BACKEND_API_SERVER_URL +
-        "/map?value=" +
-        String(latitude.payload) +
-        "," +
-        String(longitude.payload),
+      "/map?value=" +
+      String(latitude.payload) +
+      "," +
+      String(longitude.payload),
       {
         method: "GET",
       }
@@ -83,7 +83,7 @@ const ConfirmButton = ({ to, label, hiddenButtonId }) => {
       {loading ? (
         <CircularProgress />
       ) : (
-        <button onClick={handleClick}>{label}</button>
+        <button onClick={handleClick} disabled={disable} style={disableStyle}>{label}</button>
       )}
     </div>
   );

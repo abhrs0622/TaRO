@@ -12,6 +12,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+type Schedule struct {
+	Place   string `json:"place"`
+	Latitude string `json:"latitude"`
+	Longitude string `json:"longitude"`
+}
+
 type YahooApiResponse struct {
 
     Feature []struct {

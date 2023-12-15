@@ -15,19 +15,31 @@ root.render(
           <App />
           <Avatar />
         </div>
-        <footer>
+      </div>
+      <footer>
+        <div>
           <span style={{ margin: "15px 15px 15px 15px" }}>
-            <a href="https://tsumugi-official.studio.site/top">
-              VOICEVOX:春日部つむぎ
+            &copy; 2023 Team TaRO
+          </span>
+          <span style={{ margin: "15px 15px 15px 15px" }}>
+            <a href="https://github.com/abhrs0622/TaRO">
+              GitHub
             </a>
           </span>
+        </div>
+        <div>
           <span style={{ margin: "15px 15px 15px 15px" }}>
             <a href="https://developer.yahoo.co.jp/sitemap/">
               Web Services by Yahoo! JAPAN
             </a>
           </span>
-        </footer>
-      </div>
+          <span style={{ margin: "15px 15px 15px 15px" }}>
+            <a href="https://tsumugi-official.studio.site/top">
+              VOICEVOX:春日部つむぎ
+            </a>
+          </span>
+        </div>
+      </footer>
     </Provider>
   </React.StrictMode>
 );

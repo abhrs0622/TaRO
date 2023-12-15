@@ -1,6 +1,6 @@
 /*観光画面*/
 .App {
-  height: 93vh;
+  height: 92vh;
   width: 52vw;
   overflow-y: scroll;
   padding-right: 10px;
@@ -63,7 +63,7 @@ button:hover {
 .next_button_parent {
   width: 52vw;
   position: absolute;
-  bottom: 2px;
+  bottom: 50px;
 }
 
 .next_button_parent button {
@@ -104,12 +104,23 @@ button:hover {
 
 /* クレジット表記 */
 footer {
-  height: 7vh;
-  width: 94vw;
+  height: 45px;
+  width: 100%;
   position: absolute;
   bottom: 0;
   font-size: 15px;
   display: flex;
   text-align: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  background-color: #0e172c;
+  border-radius: 0%;
+}
+
+footer div {
+  display: flex;
+}
+
+footer * {
+  color: #fffffe;
+  opacity: 0.9;
 }

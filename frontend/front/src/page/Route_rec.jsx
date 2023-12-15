@@ -22,7 +22,7 @@ const Route_rec = () => {
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyDwcIO3U_TFaSghaoAoZHSwN3zpih3uc6E",
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_STREETVIEW_API_KEY
   });
   const disable = SwitchDisable().disable;
   const disableStyle = SwitchDisable().disableStyle;

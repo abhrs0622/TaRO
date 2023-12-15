@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import ReactStreetview from "react-google-streetview";
 import { useSelector } from "react-redux";
 import Button from "../components/Button";
-import ReactStreetview from "react-google-streetview";
 
 const Sightseeing = () => {
   const coordinate = useSelector((state) => state.coordinate.value);
@@ -26,7 +26,7 @@ const Sightseeing = () => {
   };
 
   // map関連
-  const googleMapsApiKey = process.env.REACT_APP_MAP_API_KEY;
+  const googleMapsApiKey = process.env.REACT_APP_GOOGLE_STREETVIEW_API_KEY;
   useEffect(() => {
     console.log("POSITIONS", positions);
   });

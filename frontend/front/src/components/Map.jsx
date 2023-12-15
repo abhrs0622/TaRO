@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { setLatitude } from "../features/latitude/latitudeSlice";
 import { setLongitude } from "../features/longitude/longitudeSlice";
 
@@ -37,7 +37,7 @@ const Map = () => {
       <div className="wrap">
         <LoadScript
           id="google-map"
-          googleMapsApiKey="AIzaSyDwcIO3U_TFaSghaoAoZHSwN3zpih3uc6E"
+          googleMapsApiKey={process.env.REACT_APP_GOOGLE_STREETVIEW_API_KEY}
         >
           <GoogleMap
             mapContainerStyle={container}

@@ -1,6 +1,6 @@
 /*観光画面*/
 .App {
-  height: 99vh;
+  height: 93vh;
   width: 52vw;
   overflow-y: scroll;
   padding-right: 10px;
@@ -86,6 +86,7 @@ button:hover {
   display: flex;
   justify-content: space-around;
   overflow: hidden;
+  margin-top: 5px;
   /* min-height: 100vh; */
 }
 
@@ -100,3 +101,17 @@ button:hover {
   justify-content: space-around;
   /* flex-grow: 1; 利用可能なスペースを埋める */
 }
+
+/* クレジット表記 */
+footer {
+  height: 7vh;
+  width: 94vw;
+  position: absolute;
+  bottom: 0;
+  font-size: 15px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+footer span {}

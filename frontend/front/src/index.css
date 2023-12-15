@@ -5,8 +5,6 @@
   overflow-y: scroll;
 }
 
-
-
 .plan :hover {
   cursor: pointer;
 }
@@ -22,7 +20,7 @@ body {
 
 * {
   color: #0e172c;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-family: "M PLUS Rounded 1c", sans-serif;
   border-radius: 3px;
 }
 
@@ -51,7 +49,6 @@ button:hover {
 .radioButton {
   accent-color: black;
 }
-
 
 .back_button_parent .buttonParent button {
   position: absolute;
@@ -88,4 +85,17 @@ button:hover {
   display: flex;
   justify-content: space-around;
   overflow: hidden;
+  /* min-height: 100vh; */
+}
+
+#main-container {
+  display: flex;
+  flex-direction: column;
+  /* height: 90%; */
+}
+
+#content-container {
+  display: flex;
+  justify-content: space-around;
+  /* flex-grow: 1; 利用可能なスペースを埋める */
 }

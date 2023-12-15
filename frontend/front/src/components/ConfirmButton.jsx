@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setPlans } from "../features/plans/plansSlice";
 
-const ConfirmButton = ({ to, label, hiddenButtonId }) => {
+const ConfirmButton = ({ to, label, hiddenButtonId, disable, disableStyle }) => {
   const latitude = useSelector((state) => state.latitude.value);
   const longitude = useSelector((state) => state.longitude.value);
   const dispatch = useDispatch();
@@ -61,7 +61,7 @@ const ConfirmButton = ({ to, label, hiddenButtonId }) => {
       {loading ? (
         <CircularProgress />
       ) : (
-        <button onClick={handleClick}>{label}</button>
+        <button onClick={handleClick} disabled={disable} style={disableStyle}>{label}</button>
       )}
     </div>
   );

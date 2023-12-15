@@ -11,9 +11,6 @@ const SelectPlan = () => {
 
   return (
     <>
-      <div className="back_button_parent">
-        <Button to="/Destination" label="←" />
-      </div>
       <div className="plans">
         {(() => {
           const Boxes = [];

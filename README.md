@@ -16,7 +16,8 @@
 
 ### Frontend Architecture
 
-![TaRO_frontend (1)](https://github.com/abhrs0622/TaRO/assets/103473179/49edbbbc-0c74-4397-9283-d0fffb22a1aa)
+![frontend_architecture_overview](https://github.com/abhrs0622/TaRO/assets/103473179/e1607859-d09f-4cec-bd0d-6ac9a55dbcec)
+
 
 ### Backend Architecture
 

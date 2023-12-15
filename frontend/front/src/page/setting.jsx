@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Radio from "../components/Radio";
 import Button from "../components/Button";
 import ApiPost from "../components/ApiPost";
@@ -6,6 +6,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { setName } from "../features/name/nameSlice";
 import { setRelationship } from "../features/relationship/relationshipSlice";
 import "./css/setting.css";
+import { ManageDisplyButton } from "../Unity/ManageDisplayButton";
+import { start } from "../Unity/AvatarActions";
+import { SwitchDisable } from "../components/SwitchDisable";
 
 // radio button
 const options1 = [
@@ -55,11 +58,12 @@ const Setting = () => {
     return <ApiPost url={url} requestData={requestData} />;
   };
 
+  const disable = SwitchDisable().disable;
+  const disableStyle = SwitchDisable().disableStyle;
+  console.log("switch Disable:" + disable + disableStyle)
+
   return (
     <>
-      <div className="back_button_parent">
-        <Button to="/" label="←" />
-      </div>
       <div className="setting">
         <div className="username">
           <h2>名前</h2>
@@ -93,6 +97,8 @@ const Setting = () => {
           to="/Destination"
           label="next page"
           hiddenButtonId="startHiddenButton"
+          disable={disable}
+          style={disableStyle}
         />
       </div>
     </>

@@ -17,6 +17,11 @@ root.render(
         </div>
         <footer>
           <span style={{ margin: "15px 15px 15px 15px" }}>
+            <a href="https://tsumugi-official.studio.site/top">
+              VOICEVOX:春日部つむぎ
+            </a>
+          </span>
+          <span style={{ margin: "15px 15px 15px 15px" }}>
             <a href="https://developer.yahoo.co.jp/sitemap/">
               Web Services by Yahoo! JAPAN
             </a>

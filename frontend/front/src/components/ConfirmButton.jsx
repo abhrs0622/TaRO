@@ -4,7 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setPlans } from "../features/plans/plansSlice";
 
-const ConfirmButton = ({ to, label, hiddenButtonId, disable, disableStyle }) => {
+const ConfirmButton = ({
+  to,
+  label,
+  hiddenButtonId,
+  disable,
+  disableStyle,
+}) => {
   const latitude = useSelector((state) => state.latitude.value);
   const longitude = useSelector((state) => state.longitude.value);
   const dispatch = useDispatch();
@@ -53,6 +59,7 @@ const ConfirmButton = ({ to, label, hiddenButtonId, disable, disableStyle }) => 
         console.error("Fetchエラー:", error);
       });
 
+    await new Promise((resolve) => setTimeout(resolve, 10000));
     navigate(to);
   };
 
@@ -61,7 +68,9 @@ const ConfirmButton = ({ to, label, hiddenButtonId, disable, disableStyle }) => 
       {loading ? (
         <CircularProgress />
       ) : (
-        <button onClick={handleClick} disabled={disable} style={disableStyle}>{label}</button>
+        <button onClick={handleClick} disabled={disable} style={disableStyle}>
+          {label}
+        </button>
       )}
     </div>
   );

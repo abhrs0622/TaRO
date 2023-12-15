@@ -64,6 +64,14 @@ export function Avatar() {
   const { unityProvider, sendMessage, addEventListener, removeEventListener } = GetUnityFunctions();
 
   const text = AvatarText();
+  const [disabled, setDisabled] = useState(true);
+  const [disabledStyle, setDisabledStyle] = useState({ opacity: 0.6, cursor: "wait" });
+  setTimeout(
+    () => {
+      setDisabled(false);
+      setDisabledStyle({ opacity: 1, cursor: "pointer" });
+    },
+    7000);
   return (
     <Fragment>
       <div className="Avatar">
@@ -81,7 +89,7 @@ export function Avatar() {
         <button id="HiddenButton">hidden</button>
         <div className="sendText">
           <textarea placeholder="アバターへのメッセージを入力してください。" value={sendText} onChange={handleChangeSendText} />
-          <button className="sendTextButton" onClick={() => sendTextToAvatar(sendText)}>send</button>
+          <button className="sendTextButton" onClick={() => sendTextToAvatar(sendText)} disabled={disabled} style={disabledStyle}>send</button>
         </div>
         <div className="AvatarText"><p>{`${text}`}</p></div>
         <Unity unityProvider={unityProvider} className="AvatarCanvas" />

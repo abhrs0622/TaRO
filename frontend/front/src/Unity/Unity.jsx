@@ -22,6 +22,9 @@ export function Avatar() {
   let sendArrivePlace1;
   let sendArrivePlace2;
   let sendArrivePlace3;
+  if (name != "taro") {
+    username = String(name);
+  }
   if (coordinate != "init") {
     relationship = String(rel);
     username = String(name);

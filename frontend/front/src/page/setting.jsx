@@ -97,8 +97,6 @@ const Setting = () => {
           to="/Destination"
           label="next page"
           hiddenButtonId="startHiddenButton"
-          disable={disable}
-          style={disableStyle}
         />
       </div>
     </>

@@ -16,12 +16,20 @@ const ConfirmButton = ({ to, label, hiddenButtonId }) => {
     const hiddenButton = document.getElementById(hiddenButtonId);
     hiddenButton.click();
     setLoading(true);
+    console.log(String(latitude.payload), String(longitude.payload));
+    var lat = String(latitude.payload);
+    var lon = String(longitude.payload);
+    if (latitude.payload === undefined) {
+      lat = "35.6852";
+      lon = "139.7528";
+    }
+
     await fetch(
       process.env.REACT_APP_BACKEND_API_SERVER_URL +
-        "/map?value=" +
-        String(latitude.payload) +
-        "," +
-        String(longitude.payload),
+        "/map?lat=" +
+        lat +
+        "&lon=" +
+        lon,
       {
         method: "GET",
       }
@@ -34,46 +42,16 @@ const ConfirmButton = ({ to, label, hiddenButtonId }) => {
         }
         return response.json();
       })
+      .then((data) => {
+        var plans = data.data.map((planData) => planData.plan);
+        console.log("get plans:", plans);
+        console.log(typeof plans);
+        console.log("length of plans: ", plans.length);
+        dispatch(setPlans(plans));
+      })
       .catch((error) => {
         console.error("Fetchエラー:", error);
       });
-
-    //
-    await new Promise((resolve) => setTimeout(resolve, 30000));
-
-    var plans;
-
-    while (true) {
-      await fetch(process.env.REACT_APP_BACKEND_API_SERVER_URL + "/get-plans", {
-        method: "GET",
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(
-              `Fetchエラー: ${response.status} - ${response.statusText}`
-            );
-          }
-          return response.json();
-        })
-        .then((data) => {
-          plans = data.data.map((planData) => planData.plan);
-          console.log("get plans:", plans);
-          console.log(typeof plans);
-          console.log("length of plans: ", plans.length);
-          // dispatch(setPlans(plans));
-        })
-        .catch((error) => {
-          console.error("Fetchエラー:", error);
-        });
-      if (plans.length !== 0) {
-        dispatch(setPlans(plans));
-        break;
-      }
-      // setTimeout(function () {
-      //   console.log("10秒経過");
-      // }, 10000);
-      await new Promise((resolve) => setTimeout(resolve, 10000));
-    }
 
     navigate(to);
   };

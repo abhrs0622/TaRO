@@ -42,10 +42,12 @@ const Sightseeing = () => {
     <div>
       <div
         style={{
-          width: "800px",
-          height: "450px",
+          width: "100%",
+          height: "60vh",
           backgroundColor: "000000",
+          marginTop: "60px",
         }}
+
       >
         <ReactStreetview
           apiKey={googleMapsApiKey}

@@ -9,7 +9,6 @@ import (
 	"github.com/awslabs/aws-lambda-go-api-proxy/gin"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-
 	// "github.com/abhrs0622/TaRO/handlers"
 	// "github.com/gin-contrib/cors"
 )
@@ -28,9 +27,10 @@ func init() {
 	//router.POST("/communication", handlers.Communication)
 	router.GET("/avatar", handlers.Avatar)
 	// router.GET("/map", handlers.Map)
-	router.GET("/get-plans", handlers.GetPlans)
+	// router.GET("/get-plans", handlers.GetPlans)
+	router.GET("/map", handlers.YahooMap)
 
-	router.Run("localhost:8080")
+	// router.Run("localhost:8080")
 
 	ginLambda = ginadapter.New(router)
 }

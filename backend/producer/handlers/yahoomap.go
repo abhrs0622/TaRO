@@ -63,13 +63,6 @@ func YahooMap(c *gin.Context) {
 	plans = append(plans, attractions[3:6])
 	plans = append(plans, attractions[6:9])
 
-	// // DynamoDBにinputするため, binaryに変換
-	// jsonData, err := json.Marshal(plans)
-	// if err != nil {
-	// 	fmt.Printf("responseをJSONに変換できませんでした。: %v", err)
-	// }
-	// binaryData := []byte(jsonData)
-
 	var responseData = gin.H{
 		"message": "",
 		"data": []gin.H{},
@@ -88,25 +81,6 @@ func YahooMap(c *gin.Context) {
 		}
 		responseData["data"] = append(responseData["data"].([]gin.H), gin.H{"plan": planData})
 	}
-
-	// sess, _ := session.NewSession()
-	// db := dynamodb.New(sess)
-	// tableName := os.Getenv("DYNAMO_TABLE")
-
-
-	// input := &dynamodb.PutItemInput{
-	// 	Item: map[string]*dynamodb.AttributeValue{
-	// 		"plansID": {
-	// 			N: aws.String("1"),
-	// 		},
-	// 		"binary": {
-	// 			B: binaryData,
-	// 		},
-	// 	},
-	// 	TableName: aws.String(tableName),
-	// }
-
-	// db.PutItem(input)
 
 	c.IndentedJSON(http.StatusOK, responseData)
 }

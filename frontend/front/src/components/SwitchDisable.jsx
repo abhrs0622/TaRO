@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 export const SwitchDisable = () => {
     const [disable, setDisable] = useState(true);
-    const [disableStyle, setDisableStyle] = useState({ opacity: 0.6 })
+    const [disableStyle, setDisableStyle] = useState({ opacity: 0.6, cursor: "wait" })
     useEffect(() => {
     }, [])
     const startTime = ManageDisplyButton().startTime;
@@ -12,7 +12,7 @@ export const SwitchDisable = () => {
         if (startTime !== "") {
             setTimeout(() => {
                 setDisable(false)
-                setDisableStyle({ opacity: 1 })
+                setDisableStyle({ opacity: 1, cursor: "pointer" })
             }, interval)
         }
     }, [startTime])

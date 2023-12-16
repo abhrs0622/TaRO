@@ -11,7 +11,7 @@ const Map = () => {
 
   const container = {
     width: "75%",
-    height: "500px",
+    height: "70vh",
   };
 
   const defaultPosition = {

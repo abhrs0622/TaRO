@@ -1,8 +1,9 @@
 /*観光画面*/
 .App {
-  height: 99vh;
+  height: 92vh;
   width: 52vw;
   overflow-y: scroll;
+  padding-right: 10px;
 }
 
 .plan :hover {
@@ -62,7 +63,7 @@ button:hover {
 .next_button_parent {
   width: 52vw;
   position: absolute;
-  bottom: 2px;
+  bottom: 50px;
 }
 
 .next_button_parent button {
@@ -85,6 +86,7 @@ button:hover {
   display: flex;
   justify-content: space-around;
   overflow: hidden;
+  margin-top: 5px;
   /* min-height: 100vh; */
 }
 
@@ -98,4 +100,27 @@ button:hover {
   display: flex;
   justify-content: space-around;
   /* flex-grow: 1; 利用可能なスペースを埋める */
+}
+
+/* クレジット表記 */
+footer {
+  height: 45px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  font-size: 15px;
+  display: flex;
+  text-align: center;
+  justify-content: space-evenly;
+  background-color: #0e172c;
+  border-radius: 0%;
+}
+
+footer div {
+  display: flex;
+}
+
+footer * {
+  color: #fffffe;
+  opacity: 0.9;
 }

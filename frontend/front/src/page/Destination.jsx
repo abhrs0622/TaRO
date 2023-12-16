@@ -5,8 +5,18 @@ import "./css/Destination.css";
 import { SwitchDisable } from "../components/SwitchDisable";
 
 const Destination = () => {
-  const disable = SwitchDisable().disable;
-  const disableStyle = SwitchDisable().disableStyle;
+  let disable = SwitchDisable().disable;
+  let disableStyle = SwitchDisable().disableStyle;
+  const perfEntries = performance.getEntriesByType("navigation");
+
+  perfEntries.forEach(function (pe) {
+    /** 読み込みタイプを取得 */
+    const type = pe.type;
+    if (type == "reload" || type == "back_forward") {
+      disable = false;
+      disableStyle = { opacity: 1 }
+    }
+  });
   return (
     <div className="Destination">
       <div className="map">

@@ -12,3 +12,4 @@
 *.json
 pkg
 .zip
+.terraform.*
